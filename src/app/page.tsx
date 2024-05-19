@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./_components/atoms/Link";
 
 const RootPage = () => (
   <Link href="/locations">

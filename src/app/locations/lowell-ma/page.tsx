@@ -1,3 +1,3 @@
-const LowellMA = () => <div>Lowell, MA</div>;
+const LowellMA = () => <div></div>;
 
 export default LowellMA;

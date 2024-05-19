@@ -6,25 +6,24 @@ import {
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavItemConfig, SubNavItemConfig } from "../_config/nav.d";
-import cursor, { EventLocationRow } from "../_db";
-import { locationToURL } from "../_lib/databaseTransformers";
+import cursor from "../_db/cursor";
+import { eventToURL } from "../_lib/databaseTransformers";
+import { EventRow } from "../_db/db.d";
 
 // HELPER FUNCTIONS
 
 /**
- * Convert a location table row to a sub-navigation item.
- * @param location - the location table row to convert to a sub-navigation item.
+ * Convert an event table row to a sub-navigation item.
+ * @param location - the event table row to convert to a sub-navigation item.
  */
-const cityToSubNavItemConfig = (
-  location: EventLocationRow,
-): SubNavItemConfig => ({
-  title: location.city,
-  href: locationToURL(location),
+const cityToSubNavItemConfig = (event: EventRow): SubNavItemConfig => ({
+  title: event.location.city,
+  href: eventToURL(event),
 });
 
 // DATA
 
-const locations = cursor.get("locations");
+const events = cursor.get("events");
 
 // CONFIG
 
@@ -33,7 +32,7 @@ const NAV_CONFIG: NavItemConfig[] = [
     title: "Locations",
     href: "/locations",
     icon: faCrosshairs,
-    subNavConfig: locations.map(cityToSubNavItemConfig),
+    subNavConfig: events.map(cityToSubNavItemConfig),
   },
   {
     title: "About",

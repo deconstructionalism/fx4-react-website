@@ -27,8 +27,8 @@ const MEDIA_BREAKPOINTS = {
 // BASIC PALLETTES
 
 const COLOR_PALETTE = {
-  primary: "#ff0000",
-  secondary: "#00ff00",
+  primary: "#FFA500",
+  secondary: "#e81ee8",
   tertiary: "#0000ff",
   alert: "#ff0000",
   white: "#ffffff",
@@ -68,12 +68,24 @@ const FONT_PALETTE = {
 // Use these to store named palette value, or computed values combining basic
 // palette values and/or other numeric calculations (for numerical palettes).
 
-const CUSTOM_COLOR_PALETTE =
-  {} as const satisfies ComponentPalettes<ColorPalette>;
+const CUSTOM_COLOR_PALETTE = {
+  Button: {
+    hoverColor: COLOR_PALETTE.primary,
+  },
+  Link: {
+    hoverColor: COLOR_PALETTE.primary,
+  },
+} as const satisfies ComponentPalettes<ColorPalette>;
 
 const CUSTOM_TIMING_PALETTE = {
   PageHeader: {
     shrinkTransition: TIMING_PALETTE.medium,
+  },
+  Button: {
+    transitionSpeed: TIMING_PALETTE.extraFast,
+  },
+  Link: {
+    transitionSpeed: TIMING_PALETTE.extraFast,
   },
 } as const satisfies ComponentPalettes<TimingPalette>;
 
@@ -98,6 +110,9 @@ const CUSTOM_SPACING_PALETTE = {
   },
   SubNavLink: {
     height: "4rem",
+  },
+  LocationBanner: {
+    titleLineHeight: "12rem",
   },
 } as const satisfies ComponentPalettes<SpacingPalette>;
 

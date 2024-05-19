@@ -63,9 +63,13 @@ const StyledTitle = styled.div<{ $isShrunk: boolean }>(
   ({ theme, $isShrunk }) => `
   background-color: ${theme.colors.white};
   padding: ${theme._spacings.PageHeader.titlePadding};
-  box-shadow: ${$isShrunk ? `0px 24px 45px 12px ${theme.colors.white}dd` : "none"};
+  box-shadow: 0px 24px 45px 12px ${theme.colors.white}66;
+  display: flex;
+  flex-direction: column;
 
   & > h1 {
+    align-self: center;
+    width: min-content;
     font-size: ${theme._spacings.PageHeader.titleFontSize};
     font-family: ${theme.fonts.heading};
     font-weight: 400;
@@ -75,7 +79,13 @@ const StyledTitle = styled.div<{ $isShrunk: boolean }>(
     line-height: ${theme._spacings.PageHeader.titleFontSize};
     letter-spacing: ${$isShrunk ? theme.spacings.l : theme.spacings.xxxs};
     cursor: pointer;
+
+    &:hover {
+      color: ${theme._colors.Link.hoverColor};
+      transition: color ${theme._timings.Link.transitionSpeed} ease;
+    }
   }
+
 
   &:after {
     content: "";

@@ -1,13 +1,13 @@
 "use client";
 
 import styled from "styled-components";
-import cursor from "../_db";
+import cursor from "../_db/cursor";
 import { generateMediaQuery } from "../_lib/themeHelpers";
 import LocationBanner from "../_components/atoms/LocationBanner";
 
 // STYLES
 
-const StyledLocationBannerContainer = styled.div(
+const StyledLocationBannerContainer = styled.section(
   ({ theme }) => `
     width: 100%;
     height: 80vh;
@@ -34,12 +34,12 @@ const StyledLocationBannerContainer = styled.div(
 const Locations = () => {
   // DATA
 
-  const locationData = cursor.get("locations");
+  const eventsData = cursor.get("events");
 
   // LOGIC
 
-  const LocationBanners = locationData.map((locationData, index) => (
-    <LocationBanner key={index} locationData={locationData}></LocationBanner>
+  const LocationBanners = eventsData.map((eventData, index) => (
+    <LocationBanner key={index} eventData={eventData}></LocationBanner>
   ));
 
   // JSX

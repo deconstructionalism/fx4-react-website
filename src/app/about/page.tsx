@@ -5,7 +5,7 @@ import P from "@/app/_components/atoms/P";
 
 const About = () => {
   return (
-    <>
+    <section>
       <Image
         src="/images/poly-segmented.jpg"
         alt="Poly Styrene collage by Dave Fischer"
@@ -36,7 +36,7 @@ const About = () => {
         our future, our joy and our celebration. We say Fuck The Fourth.
         Let&apos;s celebrate July 3rd instead, Poly Styrene&apos;s birthday!
       </P>
-    </>
+    </section>
   );
 };
 

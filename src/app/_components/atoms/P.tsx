@@ -7,7 +7,8 @@ import styled from "styled-components";
 const P = styled.p(
   ({ theme }) => `
   font-family: ${theme.fonts.body};
-  font-size: ${theme.spacings.xl};
+  font-size: ${theme.spacings.l};
+  text-align: justify;
 `,
 );
 

@@ -3,10 +3,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import Link from "next/link";
 import styled, { useTheme } from "styled-components";
 import sleep from "@/app/_lib/sleep";
 import { generateMediaQuery, timingToMs } from "@/app/_lib/themeHelpers";
+import Link from "./Link";
 
 // CONSTANTS
 

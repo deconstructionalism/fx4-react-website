@@ -1,13 +1,13 @@
 "use client";
 
 import { SubNavItemConfig } from "@/app/_config/nav.d";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styled from "styled-components";
+import Link from "./Link";
 
 // CONSTANTS
 
-const HOVER_SCALING = 1.3;
+const HOVER_SCALING = 1.35;
 
 // STYLES
 
@@ -22,7 +22,7 @@ const StyledLink = styled(Link)<{ $isActive: boolean }>(
   color: ${theme.colors.black};
   font-size: ${theme.spacings.l};
   position: relative;
-  transition: transform ${theme.timings.extraFast} ease;
+  transition: transform ${theme.timings.extraFast} ease, color ${theme._timings.Link.transitionSpeed} ease;
   transform: ${$isActive ? `scale(${HOVER_SCALING})` : "none"};
   pointer-events: ${$isActive ? "none" : "auto"};
 `,
@@ -46,7 +46,13 @@ const SubNavLink = ({
   // JSX
 
   return (
-    <StyledLink href={href} rel={rel} target={target} $isActive={isActive}>
+    <StyledLink
+      href={href}
+      rel={rel}
+      target={target}
+      $isActive={isActive}
+      scroll={true}
+    >
       {typeof title === "string" ? <span>{title}</span> : title}
     </StyledLink>
   );

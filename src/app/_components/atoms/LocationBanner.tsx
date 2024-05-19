@@ -1,44 +1,18 @@
 "use client";
 
-import { EventLocationRow } from "@/app/_db";
-import { locationToURL } from "@/app/_lib/databaseTransformers";
+import { EventRow } from "@/app/_db/db.d";
+import {
+  eventToURL,
+  formatDateForDisplay,
+} from "@/app/_lib/databaseTransformers";
 import { generateMediaQuery } from "@/app/_lib/themeHelpers";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styled from "styled-components";
 
-// HELPER FUNCTIONS
+// CONSTANTS
 
-/**
- * Format a date for display in the navigation banner.
- * @param date - the date to format.
- */
-const formatDateForNav = (date: Date): string => {
-  const getSuffix = (date: Date): string => {
-    const d = date.getDate();
-    if (d > 3 && d < 21) return "th";
-    switch (d % 10) {
-      case 1:
-        return "st";
-      case 2:
-        return "nd";
-      case 3:
-        return "rd";
-      default:
-        return "th";
-    }
-  };
-
-  const month = date.toLocaleString("default", { month: "short" });
-  const day = date.getDate();
-  const dayOfWeek = date
-    .toLocaleString("default", { weekday: "long" })
-    .substring(0, 3);
-  const daySuffix = getSuffix(date);
-  const dateString = `${dayOfWeek} ${month} ${day}${daySuffix}`;
-
-  return dateString;
-};
+const IMAGE_SCALE_FACTOR = 1.05;
 
 // STYLES
 
@@ -67,7 +41,7 @@ const StyledImageContainer = styled.div<{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: ${$isHovering ? "scale(1.05)" : "scale(1)"};
+  transform: ${$isHovering ? `scale(${IMAGE_SCALE_FACTOR})` : "scale(1)"};
   transition: transform ${theme.timings.fast} ease, filter ${theme.timings.fast} ease;
 
   filter: grayscale(100%);
@@ -75,7 +49,7 @@ const StyledImageContainer = styled.div<{
   &:hover {
     filter: grayscale(0%);
     &::after {
-      background: rgba(0, 0, 0, 0.1);
+      background: ${theme.colors.black}11;
     }
   }
 
@@ -86,7 +60,7 @@ const StyledImageContainer = styled.div<{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: ${theme.colors.black}55;
     transition: background ${theme.timings.fast} ease;
     z-index: -1;
   }
@@ -102,9 +76,9 @@ const StyledLocationTitle = styled.p(
   font-weight: bold;
   position: absolute;
   white-space: pre-line;
-  line-height: 12rem;
+  line-height: ${theme._spacings.LocationBanner.titleLineHeight};
   text-align: center;
-  text-shadow: black 0 0 20px;
+  text-shadow: ${theme.colors.black} 0 0 ${theme.spacings.s};
 
   ${generateMediaQuery("tablet")(`
     white-space: unset;
@@ -119,13 +93,13 @@ const StyledDateTitle = styled.p(
   ({ theme }) => `
   font-family: ${theme.fonts.heading};
   color: ${theme.colors.white};
-  font-size: 7rem;
+  font-size: calc(${theme.spacings.xxxl} * 2);
   letter-spacing: ${theme.spacings.xs};
   font-weight: bold;
   white-space: pre-line;
   text-align: center;
-  color: orange;
-  text-shadow: black 0 0 20px;
+  color: ${theme.colors.primary};
+  text-shadow: ${theme.colors.black} 0 0 ${theme.spacings.s};
 
   ${generateMediaQuery("tablet")(`
     white-space: unset;
@@ -137,10 +111,10 @@ const StyledDateTitle = styled.p(
 );
 
 interface LocationBannerProps {
-  locationData: EventLocationRow;
+  eventData: EventRow;
 }
 
-const LocationBanner = ({ locationData }: LocationBannerProps) => {
+const LocationBanner = ({ eventData }: LocationBannerProps) => {
   // STATE
 
   const router = useRouter();
@@ -148,7 +122,7 @@ const LocationBanner = ({ locationData }: LocationBannerProps) => {
 
   // EVENT HANDLERS
 
-  const handleClick = () => router.push(locationToURL(locationData));
+  const handleClick = () => router.push(eventToURL(eventData));
 
   const handleMouseEnter = () => setIsHovering(true);
 
@@ -156,10 +130,15 @@ const LocationBanner = ({ locationData }: LocationBannerProps) => {
 
   // LOGIC
 
-  const { narrowBannerImage, narrowBannerImageTitle, city, state, date } =
-    locationData;
+  const {
+    narrowBannerImage: { src, title },
+    location: { city, state },
+    date,
+  } = eventData;
   const locationText = `${city}\n${state}`.toUpperCase();
-  const dateText = formatDateForNav(date).toUpperCase().replace(/\s/g, "\n");
+  const dateText = formatDateForDisplay(date)
+    .toUpperCase()
+    .replace(/\s/g, "\n");
 
   // JSX
 
@@ -168,12 +147,9 @@ const LocationBanner = ({ locationData }: LocationBannerProps) => {
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      title={narrowBannerImageTitle}
+      title={title}
     >
-      <StyledImageContainer
-        $imgSrc={narrowBannerImage}
-        $isHovering={isHovering}
-      >
+      <StyledImageContainer $imgSrc={src} $isHovering={isHovering}>
         <StyledLocationTitle>{locationText}</StyledLocationTitle>
         <StyledDateTitle>{`${dateText}`}</StyledDateTitle>
       </StyledImageContainer>
