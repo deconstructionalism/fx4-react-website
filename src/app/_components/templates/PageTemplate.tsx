@@ -51,7 +51,7 @@ const StyledMain = styled.main<{ $isShrunk: boolean; $hasSubMenu: boolean }>(
   padding-top: ${
     $hasSubMenu
       ? addThemeValues(
-          theme._spacings.HeaderSubNavBar.height,
+          theme._spacings.SubNavLink.height,
           theme._spacings.HeaderSubNavBar.paddingTop,
         )
       : 0
