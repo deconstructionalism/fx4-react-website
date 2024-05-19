@@ -15,8 +15,9 @@ const StyledFlyerContainer = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
-  gap: 1rem;
+  gap: 4rem;
   margin-bottom: 2rem;
+  width: 90%;
 `;
 
 const ProvidenceRI = () => {
@@ -29,8 +30,8 @@ const ProvidenceRI = () => {
   return (
     <section>
       <P>
-        We are trying to run this years fest as a benefit for Gaza, and we are
-        trying to keep our ticket prices low.
+        We are trying to run this years fest as a <b>benefit for Gaza</b>, and we are
+        trying to <b>keep our ticket prices low</b>.
       </P>
       <P>
         In order to do this, we are running a few benefit shows to cover the
