@@ -6,7 +6,8 @@ import { SubNavItemConfig } from "@/app/_config/nav.d";
 
 // STYLES
 
-const StyledSubNav = styled.nav(({ theme }) => `
+const StyledSubNav = styled.nav(
+  ({ theme }) => `
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -14,7 +15,8 @@ const StyledSubNav = styled.nav(({ theme }) => `
   text-transform: uppercase;
   padding-top: ${theme._spacings.HeaderSubNavBar.paddingTop};
   height: ${theme._spacings.HeaderSubNavBar.height};
-`)
+`,
+);
 
 interface HeaderSubNavBarProps {
   config: SubNavItemConfig[];

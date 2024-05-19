@@ -5,9 +5,8 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Link from "next/link";
 import styled, { useTheme } from "styled-components";
-import useIsMobile from "@/app/_lib/useIsMobile";
 import sleep from "@/app/_lib/sleep";
-import { timingToMs } from "@/app/_lib/themeHelpers";
+import { generateMediaQuery, timingToMs } from "@/app/_lib/themeHelpers";
 
 // CONSTANTS
 
@@ -32,11 +31,8 @@ const StyledLink = styled(Link)`
   position: relative;
 `;
 
-const StyledLinkText = styled.span<{
-  $isHovering: boolean;
-  $isMobile: boolean;
-}>(
-  ({ $isHovering, theme, $isMobile }) => `
+const StyledLinkText = styled.span<{ $isHovering: boolean }>(
+  ({ $isHovering, theme }) => `
   color: ${$isHovering ? theme.colors.white : theme.colors.gray};
   text-transform: uppercase;
   font-size: ${theme.spacings.l};
@@ -45,20 +41,14 @@ const StyledLinkText = styled.span<{
   transform-origin: left;
   transition: transform ${theme.timings.extraFast} ease;
 
-  ${
-    $isMobile &&
-    `
+  ${generateMediaQuery("mobile")(`
     display: none;
-  `
-  }
+  `)}
 `,
 );
 
-const StyledIconContainer = styled.div<{
-  $isHovering: boolean;
-  $isMobile: boolean;
-}>(
-  ({ theme, $isHovering, $isMobile }) => `
+const StyledIconContainer = styled.div<{ $isHovering: boolean }>(
+  ({ theme, $isHovering }) => `
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -68,12 +58,9 @@ const StyledIconContainer = styled.div<{
   transform: scale(${$isHovering ? HOVER_SCALING : 1});
   transition: transform ${theme.timings.extraFast} ease;
 
-  ${
-    $isMobile &&
-    `
-  padding: 0;
-  `
-  }
+  ${generateMediaQuery("mobile")(`
+    padding: 0;
+  `)}
 `,
 );
 
@@ -94,7 +81,6 @@ const NavLink = ({
   // STATE
 
   const [isHovering, setIsHovering] = useState<boolean>(false);
-  const isMobile = useIsMobile();
   const theme = useTheme();
 
   // EVENT HANDLERS
@@ -136,7 +122,7 @@ const NavLink = ({
       target={target}
       tabIndex={0}
     >
-      <StyledIconContainer $isHovering={isHovering} $isMobile={isMobile}>
+      <StyledIconContainer $isHovering={isHovering}>
         <StyledFontAwesomeIcon
           color={color}
           icon={icon}
@@ -144,9 +130,7 @@ const NavLink = ({
           titleId={title}
         />
       </StyledIconContainer>
-      <StyledLinkText $isHovering={isHovering} $isMobile={isMobile}>
-        {title}
-      </StyledLinkText>
+      <StyledLinkText $isHovering={isHovering}>{title}</StyledLinkText>
     </StyledLink>
   );
 };

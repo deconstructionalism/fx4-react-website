@@ -14,7 +14,7 @@ const useHasSubMenu = () => {
   );
   const subNavConfig = navItemConfig?.subNavConfig;
 
-  return subNavConfig
-}
+  return subNavConfig;
+};
 
 export default useHasSubMenu;

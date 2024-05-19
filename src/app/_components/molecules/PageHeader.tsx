@@ -23,9 +23,17 @@ const StyledHeader = styled.header<{ $hasSubMenu: boolean }>(
     theme._spacings.PageHeader.titlePadding,
     theme._spacings.PageHeader.titlePadding,
     theme._spacings.PageHeader.titleFontSize,
-    $hasSubMenu ? theme._spacings.HeaderSubNavBar.gap : 0,
-    $hasSubMenu ? theme._spacings.HeaderSubNavBar.paddingTop : 0
   )};
+
+  padding-bottom: ${
+    $hasSubMenu
+      ? addThemeValues(
+          theme._spacings.HeaderSubNavBar.height,
+          theme._spacings.HeaderSubNavBar.paddingTop,
+        )
+      : 0
+  };
+
   `,
 );
 

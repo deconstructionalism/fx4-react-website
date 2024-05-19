@@ -1,16 +1,18 @@
 "use client";
 
 import styled from "styled-components";
+import { generateMediaQuery } from "@/app/_lib/themeHelpers";
 
 // STYLES
 
 const StyledHTML = styled.html(
   ({ theme }) => `
-  font-size: 10px;
+  font-size: ${theme.spacingBasis};
 
   /* Safari Scrollbar Settings */
   ::-webkit-scrollbar {
     background-color: ${theme.colors.white};
+    display: auto;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -21,6 +23,19 @@ const StyledHTML = styled.html(
 
   /* Firefox and Chrome Scrollbar Settings */
   scrollbar-color: ${theme.colors.black} ${theme.colors.white};
+  scrollbar-width: thin;
+
+  ${generateMediaQuery("mobile")(`
+    font-size: 2vw;
+
+    /* Safari Scrollbar Settings */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Firefox and Chrome Scrollbar Settings */
+    scrollbar-width: none;
+  `)}
   `,
 );
 

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 // STYLES
 
-const StyledLocation = styled.div<{ $dateText: string, $isHovering: boolean }>(
+const StyledLocation = styled.div<{ $dateText: string; $isHovering: boolean }>(
   ({ theme, $dateText, $isHovering }) => `
   width: 20rem;
   display: flex;

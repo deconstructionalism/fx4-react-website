@@ -3,6 +3,7 @@
 // primitive palette value types
 export type Color = `#${string}`;
 export type Spacing = `${number}rem`;
+export type SpacingBasis = `${number}px`;
 export type Timing = `${number}s`;
 export type FontFamily =
   | `${string}, sans-serif`

@@ -2,7 +2,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import {
   faCrosshairs,
   faEnvelope,
-  faInfo,
+  faCircleQuestion,
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import SubNavLocationLink from "../_components/atoms/SubNavLocationLink";
@@ -51,13 +51,13 @@ const NAV_CONFIG: NavItemConfig[] = [
   {
     title: "About",
     href: "/about",
-    icon: faInfo,
+    icon: faCircleQuestion,
   },
-  {
-    title: "DIY",
-    href: "/diy",
-    icon: faScrewdriverWrench,
-  },
+  // {
+  //   title: "DIY",
+  //   href: "/diy",
+  //   icon: faScrewdriverWrench,
+  // },
   {
     title: "Contact",
     href: "mailto:info@fuckthefourth.com",

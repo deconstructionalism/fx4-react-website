@@ -5,12 +5,12 @@ import { useState } from "react";
 import navConfig from "@/app/_config/nav";
 import NavLink from "@/app/_components/atoms/NavLink";
 import styled from "styled-components";
-import useIsMobile from "@/app/_lib/useIsMobile";
+import { generateMediaQuery } from "@/app/_lib/themeHelpers";
 
 // STYLES
 
-const StyledNav = styled.nav<{ $expanded: boolean; $isMobile: boolean }>(
-  ({ theme, $expanded, $isMobile }) => `
+const StyledNav = styled.nav<{ $expanded: boolean }>(
+  ({ theme, $expanded }) => `
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -27,17 +27,15 @@ const StyledNav = styled.nav<{ $expanded: boolean; $isMobile: boolean }>(
   z-index: 1000;
   overflow-y: hidden;
 
-  ${
-    $isMobile &&
-    `
+  ${generateMediaQuery("mobile")(`
     top: unset;
     right: 0;
     max-width: unset;
     flex-direction: row;
     padding: ${theme.spacings.m};
     justify-content: space-around;
-  `
-  }
+    transition: none;
+  `)}
  `,
 );
 
@@ -45,7 +43,6 @@ const NavBar = () => {
   // STATE
 
   const [navExpanded, setNavExpanded] = useState<boolean>(false);
-  const isMobile = useIsMobile();
   const basePath = usePathname().split("/")[1];
 
   // LOGIC
@@ -58,7 +55,7 @@ const NavBar = () => {
         externalLink={externalLink}
         href={href}
         icon={icon}
-        isActive={activePath === href.replace('/', '')}
+        isActive={activePath === href.replace("/", "")}
         key={index}
         setNavExpanded={setNavExpanded}
         title={title}
@@ -68,11 +65,7 @@ const NavBar = () => {
 
   // JSX
 
-  return (
-    <StyledNav $expanded={navExpanded} $isMobile={isMobile}>
-      {NavItems}
-    </StyledNav>
-  );
+  return <StyledNav $expanded={navExpanded}>{NavItems}</StyledNav>;
 };
 
 export default NavBar;

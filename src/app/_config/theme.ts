@@ -1,4 +1,3 @@
-import Head from "next/head";
 import type {
   BasicColors,
   BasicSpacings,
@@ -6,9 +5,24 @@ import type {
   ColorPalette,
   ComponentPalettes,
   FontFamily,
+  SpacingBasis,
   SpacingPalette,
   TimingPalette,
 } from "./theme.d";
+
+// SPACING BASIS
+
+const SPACING_BASIS = "10px" as const satisfies SpacingBasis;
+
+// MEDIA BREAKPOINTS
+
+const MEDIA_BREAKPOINTS = {
+  mobileSmall: 320,
+  mobile: 480,
+  tablet: 768,
+  desktop: 992,
+  desktopWide: 1200,
+} as const satisfies Record<string, number>;
 
 // BASIC PALLETTES
 
@@ -76,14 +90,13 @@ const CUSTOM_SPACING_PALETTE = {
   Footer: {
     emblemHeight: "10rem",
     height: "50rem",
-    paddingTop: "10rem"
+    paddingTop: "10rem",
   },
   HeaderSubNavBar: {
     gap: SPACING_PALETTE.s,
     paddingTop: SPACING_PALETTE.s,
     height: "5rem",
   },
-
 } as const satisfies ComponentPalettes<SpacingPalette>;
 
 // THEME
@@ -96,6 +109,8 @@ const theme = {
   timings: TIMING_PALETTE,
   _timings: CUSTOM_TIMING_PALETTE,
   fonts: FONT_PALETTE,
+  spacingBasis: SPACING_BASIS,
+  breakpoints: MEDIA_BREAKPOINTS,
 };
 
 // TYPES

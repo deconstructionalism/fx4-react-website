@@ -1,5 +1,6 @@
 // PALETTE HELPER FUNCTIONS
 
+import theme, { Theme } from "../_config/theme";
 import type { Spacing, Timing } from "../_config/theme.d";
 
 // TYPE GUARDS
@@ -19,6 +20,10 @@ const isSpacing = (value: any): value is Spacing => {
 const isTiming = (value: any): value is Timing => {
   return typeof value === "string" && value.endsWith("s");
 };
+
+// TYPES
+
+type MediaFeatureType = "min-width" | "max-width";
 
 /**
  * Add Spacing or Timing values together with numeric
@@ -43,6 +48,33 @@ function addThemeValues(...values: any[]): any {
 }
 
 /**
+ * Generate a media query string generator based on a breakpoint and CSS.
+ *
+ * @param breakpoint - Name of breakpoint to use.
+ * @param type - Type of media feature to use.
+ * @returns - Function that takes CSS and returns a media query string.
+ */
+const generateMediaQuery = (
+  breakpoint: keyof Theme["breakpoints"],
+  type: MediaFeatureType = "max-width",
+) => {
+  return (css: string) =>
+    `@media (${type}: ${theme.breakpoints[breakpoint]}px) { ${css} }`;
+};
+
+/**
+ * Hook to check if the window matches a breakpoint.
+ * @param breakpoint - Name of breakpoint to use.
+ * @param type - Type of media feature to use.
+ */
+const useBreakpoint = (
+  breakpoint: keyof Theme["breakpoints"],
+  type: MediaFeatureType = "max-width",
+) => {
+  return window.matchMedia(`(${type}: ${breakpoint}px)`).matches;
+};
+
+/**
  * Convert a Timing value to milliseconds.
  * @param timing - Timing value to convert
  */
@@ -50,4 +82,4 @@ const timingToMs = (timing: Timing): number => {
   return parseFloat(timing) * 1000;
 };
 
-export { addThemeValues, timingToMs };
+export { addThemeValues, generateMediaQuery, timingToMs, useBreakpoint };

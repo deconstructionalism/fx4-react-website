@@ -26,7 +26,7 @@ export interface NavItemConfig {
   /**
    * Configuration for the sub-navigation items.
    */
-  subNavConfig?: SubNavItemConfig[]
+  subNavConfig?: SubNavItemConfig[];
 }
 
 export interface SubNavItemConfig {
