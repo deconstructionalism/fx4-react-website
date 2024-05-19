@@ -5,8 +5,26 @@ import {
   faCircleQuestion,
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
-import SubNavLocationLink from "../_components/atoms/SubNavLocationLink";
-import { NavItemConfig } from "../_config/nav.d";
+import { NavItemConfig, SubNavItemConfig } from "../_config/nav.d";
+import cursor, { EventLocationRow } from "../_db";
+import { locationToURL } from "../_lib/databaseTransformers";
+
+// HELPER FUNCTIONS
+
+/**
+ * Convert a location table row to a sub-navigation item.
+ * @param location - the location table row to convert to a sub-navigation item.
+ */
+const cityToSubNavItemConfig = (
+  location: EventLocationRow,
+): SubNavItemConfig => ({
+  title: location.city,
+  href: locationToURL(location),
+});
+
+// DATA
+
+const locations = cursor.get("locations");
 
 // CONFIG
 
@@ -15,38 +33,7 @@ const NAV_CONFIG: NavItemConfig[] = [
     title: "Locations",
     href: "/locations",
     icon: faCrosshairs,
-    subNavConfig: [
-      {
-        title: (
-          <SubNavLocationLink
-            city="Lowell"
-            state="MA"
-            date={new Date("2024-07-04")}
-          />
-        ),
-        href: "/locations/lowell-ma",
-      },
-      {
-        title: (
-          <SubNavLocationLink
-            city="Providence"
-            state="RI"
-            date={new Date("2024-07-05")}
-          />
-        ),
-        href: "/locations/providence-ri",
-      },
-      {
-        title: (
-          <SubNavLocationLink
-            city="New York City"
-            state="NY"
-            date={new Date("2024-07-06")}
-          />
-        ),
-        href: "/locations/new-york-city-ny",
-      },
-    ],
+    subNavConfig: locations.map(cityToSubNavItemConfig),
   },
   {
     title: "About",

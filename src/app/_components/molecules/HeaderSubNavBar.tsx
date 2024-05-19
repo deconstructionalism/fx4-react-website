@@ -14,7 +14,6 @@ const StyledSubNav = styled.nav(
   gap: ${theme._spacings.HeaderSubNavBar.gap};
   text-transform: uppercase;
   padding-top: ${theme._spacings.HeaderSubNavBar.paddingTop};
-  height: ${theme._spacings.HeaderSubNavBar.height};
 `,
 );
 

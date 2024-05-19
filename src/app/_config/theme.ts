@@ -95,7 +95,9 @@ const CUSTOM_SPACING_PALETTE = {
   HeaderSubNavBar: {
     gap: SPACING_PALETTE.s,
     paddingTop: SPACING_PALETTE.s,
-    height: "5rem",
+  },
+  SubNavLink: {
+    height: "4rem",
   },
 } as const satisfies ComponentPalettes<SpacingPalette>;
 

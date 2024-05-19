@@ -6,6 +6,7 @@ import Logo from "@/app/_components/atoms/Logo";
 import styled from "styled-components";
 import HeaderSubNavBar from "./HeaderSubNavBar";
 import useHasSubMenu from "@/app/_lib/useHasSubMenu";
+import { useRouter } from "next/navigation";
 
 // STYLES
 
@@ -24,11 +25,12 @@ const StyledHeader = styled.header<{ $hasSubMenu: boolean }>(
     theme._spacings.PageHeader.titlePadding,
     theme._spacings.PageHeader.titleFontSize,
   )};
+  z-index: 10;
 
   padding-bottom: ${
     $hasSubMenu
       ? addThemeValues(
-          theme._spacings.HeaderSubNavBar.height,
+          theme._spacings.SubNavLink.height,
           theme._spacings.HeaderSubNavBar.paddingTop,
         )
       : 0
@@ -72,35 +74,18 @@ const StyledTitle = styled.div<{ $isShrunk: boolean }>(
     margin: 0;
     line-height: ${theme._spacings.PageHeader.titleFontSize};
     letter-spacing: ${$isShrunk ? theme.spacings.l : theme.spacings.xxxs};
+    cursor: pointer;
   }
 
   &:after {
     content: "";
     display: block;
     border-radius: 10rem;
-    height: ${theme.spacings.xs};
+    height: ${theme.spacings.xxs};
     width: ${$isShrunk ? `calc(2 * ${theme._spacings.PageHeader.titlePadding} + 100%)` : "0"};
     transition: all ${theme._timings.PageHeader.shrinkTransition} ease;
     transform: translate(-${theme._spacings.PageHeader.titlePadding}, ${theme._spacings.PageHeader.titlePadding});
-
-    ${
-      $isShrunk &&
-      `
-      animation: burn 0.4s ease infinite 0s alternate;
-
-      @keyframes burn {
-        0% {
-          background: red;
-        }
-        50% {
-          background: yellow;
-        }
-        100% {
-          background: orange;
-        }
-      }
-    `
-    };
+    background: ${theme.colors.black};};
   }
 
 `,
@@ -117,6 +102,11 @@ const PageHeader = ({ isShrunk }: PageHeaderProps) => {
 
   const segments = useSelectedLayoutSegments();
   const subMenuConfig = useHasSubMenu();
+  const router = useRouter();
+
+  // EVENT HANDLERS
+
+  const handleClick = () => router.push(`/${segments[0]}`);
 
   // LOGIC
 
@@ -131,7 +121,7 @@ const PageHeader = ({ isShrunk }: PageHeaderProps) => {
         <StyledLogo $isShrunk={isShrunk} />
       </StyledLogoContainer>
       <StyledTitle $isShrunk={isShrunk}>
-        <h1>{pageName}</h1>
+        <h1 onClick={handleClick}>{pageName}</h1>
         {hasSubMenu && <HeaderSubNavBar config={subMenuConfig} />}
       </StyledTitle>
     </StyledHeader>
