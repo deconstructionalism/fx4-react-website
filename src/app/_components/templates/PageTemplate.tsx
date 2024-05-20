@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import NavBar from "../molecules/NavBar";
-import PageHeader from "../molecules/PageHeader";
+import Header from "../molecules/Header";
 import { useEffect, useState } from "react";
 import { addThemeValues, generateMediaQuery } from "@/app/_lib/themeHelpers";
 import Footer from "../molecules/Footer";
@@ -37,15 +37,15 @@ const StyledMain = styled.main<{ $isShrunk: boolean; $hasSubMenu: boolean }>(
   margin-top: ${
     $isShrunk
       ? addThemeValues(
-          theme._spacings.PageHeader.titleFontSize,
-          theme._spacings.PageHeader.titlePadding,
-          theme._spacings.PageHeader.titlePadding,
+          theme._spacings.Header.titleFontSize,
+          theme._spacings.Header.titlePadding,
+          theme._spacings.Header.titlePadding,
         )
       : addThemeValues(
-          theme._spacings.PageHeader.titleFontSize,
-          theme._spacings.PageHeader.titlePadding,
-          theme._spacings.PageHeader.titlePadding,
-          theme._spacings.PageHeader.logoHeight,
+          theme._spacings.Header.titleFontSize,
+          theme._spacings.Header.titlePadding,
+          theme._spacings.Header.titlePadding,
+          theme._spacings.Header.logoHeight,
         )
   };
   padding-top: ${
@@ -92,7 +92,7 @@ const PageTemplate = ({ children }: PageTemplateProps) => {
   return (
     <StyledBody>
       <NavBar />
-      <PageHeader isShrunk={isShrunk} />
+      <Header isShrunk={isShrunk} />
       <StyledMain $isShrunk={isShrunk} $hasSubMenu={hasSubMenu}>
         {children}
       </StyledMain>

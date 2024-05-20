@@ -16,14 +16,14 @@ const StyledHeader = styled.header<{ $hasSubMenu: boolean }>(
   top: 0;
   display:flex;
   flex-direction: column;
-  transition: all ${theme._timings.PageHeader.shrinkTransition} ease;
-  max-width: ${theme._spacings.PageHeader.maxWidth};
+  transition: all ${theme._timings.Header.shrinkTransition} ease;
+  max-width: ${theme._spacings.Header.maxWidth};
   margin-left: auto;
   margin-right: auto;
   height: ${addThemeValues(
-    theme._spacings.PageHeader.titlePadding,
-    theme._spacings.PageHeader.titlePadding,
-    theme._spacings.PageHeader.titleFontSize,
+    theme._spacings.Header.titlePadding,
+    theme._spacings.Header.titlePadding,
+    theme._spacings.Header.titleFontSize,
   )};
   z-index: 10;
 
@@ -50,8 +50,8 @@ const StyledLogoContainer = styled.div(
 
 const StyledLogo = styled(Logo)<{ $isShrunk: boolean }>(
   ({ theme, $isShrunk }) => `
-  height: ${$isShrunk ? `0` : theme._spacings.PageHeader.logoHeight};
-  transition: height ${theme._timings.PageHeader.shrinkTransition} ease;
+  height: ${$isShrunk ? `0` : theme._spacings.Header.logoHeight};
+  transition: height ${theme._timings.Header.shrinkTransition} ease;
 
   > g {
     fill: ${theme.colors.black};
@@ -62,7 +62,7 @@ const StyledLogo = styled(Logo)<{ $isShrunk: boolean }>(
 const StyledTitle = styled.div<{ $isShrunk: boolean }>(
   ({ theme, $isShrunk }) => `
   background-color: ${theme.colors.white};
-  padding: ${theme._spacings.PageHeader.titlePadding};
+  padding: ${theme._spacings.Header.titlePadding};
   box-shadow: 0px 24px 45px 12px ${theme.colors.white}66;
   display: flex;
   flex-direction: column;
@@ -70,13 +70,13 @@ const StyledTitle = styled.div<{ $isShrunk: boolean }>(
   & > h1 {
     align-self: center;
     width: min-content;
-    font-size: ${theme._spacings.PageHeader.titleFontSize};
+    font-size: ${theme._spacings.Header.titleFontSize};
     font-family: ${theme.fonts.heading};
     font-weight: 400;
     text-align: center;
-    transition: all ${theme._timings.PageHeader.shrinkTransition} ease;
+    transition: all ${theme._timings.Header.shrinkTransition} ease;
     margin: 0;
-    line-height: ${theme._spacings.PageHeader.titleFontSize};
+    line-height: ${theme._spacings.Header.titleFontSize};
     letter-spacing: ${$isShrunk ? theme.spacings.l : theme.spacings.xxxs};
     cursor: pointer;
 
@@ -92,9 +92,9 @@ const StyledTitle = styled.div<{ $isShrunk: boolean }>(
     display: block;
     border-radius: 10rem;
     height: ${theme.spacings.xxs};
-    width: ${$isShrunk ? `calc(2 * ${theme._spacings.PageHeader.titlePadding} + 100%)` : "0"};
-    transition: all ${theme._timings.PageHeader.shrinkTransition} ease;
-    transform: translate(-${theme._spacings.PageHeader.titlePadding}, ${theme._spacings.PageHeader.titlePadding});
+    width: ${$isShrunk ? `calc(2 * ${theme._spacings.Header.titlePadding} + 100%)` : "0"};
+    transition: all ${theme._timings.Header.shrinkTransition} ease;
+    transform: translate(-${theme._spacings.Header.titlePadding}, ${theme._spacings.Header.titlePadding});
     background: ${theme.colors.black};};
   }
 
@@ -103,11 +103,11 @@ const StyledTitle = styled.div<{ $isShrunk: boolean }>(
 
 // TYPES
 
-interface PageHeaderProps {
+interface HeaderProps {
   isShrunk: boolean;
 }
 
-const PageHeader = ({ isShrunk }: PageHeaderProps) => {
+const Header = ({ isShrunk }: HeaderProps) => {
   // STATE
 
   const segments = useSelectedLayoutSegments();
@@ -138,4 +138,4 @@ const PageHeader = ({ isShrunk }: PageHeaderProps) => {
   );
 };
 
-export default PageHeader;
+export default Header;

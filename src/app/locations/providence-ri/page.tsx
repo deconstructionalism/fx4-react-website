@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 const StyledButton = styled(Button)`
   margin: 0 auto;
+  width: 90%;
 `;
 
 const StyledFlyerContainer = styled.div`
@@ -30,13 +31,13 @@ const ProvidenceRI = () => {
   return (
     <section>
       <P>
-        We are trying to run this years fest as a <b>benefit for Gaza</b>, and we are
-        trying to <b>keep our ticket prices low</b>.
+        We are trying to run this years fest as a <b>benefit for Gaza</b>, and
+        we are trying to <b>keep our ticket prices low</b>.
       </P>
       <P>
         In order to do this, we are running a few benefit shows to cover the
-        costs of the fest, or if you want to donate directly, you can use the
-        button below.
+        costs of the fest, or{" "}
+        <b>if you want to donate directly, you can use the button below</b>.
       </P>
       <StyledFlyerContainer>
         <Image

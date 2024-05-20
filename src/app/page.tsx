@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const RootPage = () => {
-
   // STATE
 
   const router = useRouter();
@@ -13,14 +12,11 @@ const RootPage = () => {
 
   useEffect(() => {
     router.push("/locations");
-  }, []);
+  }, [router]);
 
   // JSX
 
-  return (
-    <></>
-  )
-
+  return <></>;
 };
 
 export default RootPage;

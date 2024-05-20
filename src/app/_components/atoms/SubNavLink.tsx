@@ -7,7 +7,7 @@ import Link from "./Link";
 
 // CONSTANTS
 
-const HOVER_SCALING = 1.35;
+const HOVER_SCALING = 1.2;
 
 // STYLES
 

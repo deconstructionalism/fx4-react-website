@@ -8,7 +8,7 @@ const eventsTable: EventRow[] = [
     location: {
       city: "Lowell",
       state: "MA",
-      name: "dm @jefrey_with_1f on Instagram for address",
+      name: "DM for address",
     },
     date: new Date(2024, 6, 4),
     narrowBannerImage: {
@@ -22,24 +22,90 @@ const eventsTable: EventRow[] = [
         title: "Instagram",
       },
     },
+    ticketCost: "$5",
     lineup: [
-      { name: "Dying In Space" },
+      {
+        name: "Dying In Space",
+        socialMediaLinks: {
+          bandcamp: { href: "https://dyinginspace.bandcamp.com/" },
+        },
+      },
       { name: "Abdul Sherazi" },
       { name: "Professor A" },
-      { name: "Cryptwarbler" },
-      { name: "Closer Bones" },
-      { name: "Birdorgan" },
+      {
+        name: "Cryptwarbler",
+        socialMediaLinks: {
+          bandcamp: { href: "https://cryptwarbler.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Closer Bones",
+        socialMediaLinks: {
+          bandcamp: { href: "https://closerbones.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Birdorgan",
+        socialMediaLinks: {
+          bandcamp: { href: "https://birdorgan.bandcamp.com/" },
+        },
+      },
       { name: "Killashandra Doe" },
-      { name: "Dino Crisis" },
-      { name: "R.C. Christian" },
-      { name: "The Cost Ov Living" },
+      {
+        name: "Dino Crisis",
+        socialMediaLinks: {
+          bandcamp: { href: "https://dinocrisis.bandcamp.com/" },
+        },
+      },
+      {
+        name: "R.C. Christian",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/r_c_christian/" },
+        },
+      },
+      {
+        name: "The Cost Ov Living",
+        socialMediaLinks: {
+          bandcamp: { href: "https://thecol.bandcamp.com/" },
+        },
+      },
       { name: "A.Drift" },
-      { name: "She/They Hazard" },
-      { name: "Butt Mommy" },
-      { name: "Zilmrah" },
-      { name: "Compactor" },
-      { name: "Farrah Faucet" },
-      { name: "Yotzeret Sheydim" },
+      {
+        name: "She/They Hazard",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/she_theyhazard/" },
+        },
+      },
+      {
+        name: "Butt Mommy",
+        socialMediaLinks: {
+          bandcamp: { href: "https://buttmommy.bandcamp.com" },
+        },
+      },
+      {
+        name: "Zilmrah",
+        socialMediaLinks: {
+          bandcamp: { href: "https://zilmrah.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Compactor",
+        socialMediaLinks: {
+          bandcamp: { href: "https://compactor.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Farrah Faucet",
+        socialMediaLinks: {
+          bandcamp: { href: "https://farrahfaucet.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Yotzeret Sheydim",
+        socialMediaLinks: {
+          bandcamp: { href: "https://yotzeretsheydim.bandcamp.com/" },
+        },
+      },
     ],
     eventPoster: {
       src: "/images/posters/lowell.jpg",
@@ -73,22 +139,103 @@ const eventsTable: EventRow[] = [
     },
     ticketCost: "$25, all ages",
     lineup: [
-      { name: "Trophy Hunt" },
-      { name: "Gyna Bootleg" },
-      { name: "Foco" },
-      { name: "Dogwalker" },
-      { name: "Potter’s Field" },
-      { name: "Persona" },
-      { name: "Annihil" },
-      { name: "Rectrix" },
-      { name: "Move" },
-      { name: "Sync Sapro" },
-      { name: "Pharmakon" },
-      { name: "MKOUR VILIJI" },
-      { name: "Phagocyte" },
-      { name: "Fatboi Sharif" },
-      { name: "Rejekts" },
-      { name: "Lal" },
+      {
+        name: "Trophy Hunt",
+        socialMediaLinks: {
+          bandcamp: {
+            href: "https://trophyhunt.bandcamp.com/album/the-branches-on-either-side",
+          },
+        },
+      },
+      {
+        name: "Gyna Bootleg",
+        socialMediaLinks: {
+          bandcamp: { href: "https://gynabootleg.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Foco",
+        socialMediaLinks: {
+          bandcamp: {
+            href: "https://focoizm.bandcamp.com/",
+          },
+        },
+      },
+      {
+        name: "Dogwalker",
+        socialMediaLinks: {
+          bandcamp: { href: "https://dogwalker.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Potter's Field",
+        socialMediaLinks: {
+          bandcamp: { href: "https://pottersfieldnj.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Persona",
+        socialMediaLinks: {
+          bandcamp: { href: "https://personanyc.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Annihil",
+        socialMediaLinks: {
+          bandcamp: { href: "https://annihil.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Rectrix",
+        socialMediaLinks: {
+          bandcamp: {
+            href: "https://bonedustprov.bandcamp.com/album/desperate-measure",
+          },
+        },
+      },
+      {
+        name: "Move",
+        socialMediaLinks: {
+          bandcamp: { href: "https://move-bhc.bandcamp.com/" },
+        },
+      },
+      { name: "Sync Sapro", website: { href: "https://www.syncsapro.com/" } },
+      {
+        name: "Pharmakon",
+        socialMediaLinks: {
+          bandcamp: { href: "https://pharmakon.bandcamp.com/" },
+        },
+      },
+      {
+        name: "MKOUR VILIJI",
+        socialMediaLinks: {
+          bandcamp: { href: "https://mackenzierecordsyou.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Phagocyte",
+        socialMediaLinks: {
+          bandcamp: { href: "https://phagocyte-doesnt-like-u.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Fatboi Sharif",
+        socialMediaLinks: {
+          bandcamp: { href: "https://fatboisharif.bandcamp.com" },
+        },
+      },
+      {
+        name: "Rejekts",
+        socialMediaLinks: {
+          bandcamp: { href: "https://rejektsboston.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Lal",
+        socialMediaLinks: {
+          bandcamp: { href: "https://lalnyc.bandcamp.com/" },
+        },
+      },
     ],
   },
   {
@@ -106,12 +253,48 @@ const eventsTable: EventRow[] = [
     },
     socialMediaLinks: {},
     lineup: [
-      { name: "Pharmakon" },
-      { name: "Blu Anxxiety" },
-      { name: "Murder Pact" },
-      { name: "Foco " },
-      { name: "Jacob Winans" },
-      { name: "Saturn Lavender" },
+      {
+        name: "Pharmakon",
+        socialMediaLinks: {
+          bandcamp: { href: "https://pharmakon.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Blu Anxxiety",
+        socialMediaLinks: {
+          bandcamp: { href: "https://bluanxxiety.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Murder Pact",
+        socialMediaLinks: {
+          bandcamp: { href: "https://murderpact.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Foco",
+        socialMediaLinks: {
+          bandcamp: {
+            href: "https://focoizm.bandcamp.com/",
+          },
+        },
+      },
+      {
+        name: "Jacob Winans",
+        socialMediaLinks: {
+          bandcamp: {
+            href: "https://1-1-7.bandcamp.com/album/117-13-bound-for-the-floor",
+          },
+        },
+      },
+      {
+        name: "Saturn Lavender",
+        socialMediaLinks: {
+          bandcamp: {
+            href: "https://saturnlavender.bandcamp.com/album/green-in-grey",
+          },
+        },
+      },
     ],
   },
 ];
