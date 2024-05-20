@@ -78,7 +78,7 @@ const CUSTOM_COLOR_PALETTE = {
 } as const satisfies ComponentPalettes<ColorPalette>;
 
 const CUSTOM_TIMING_PALETTE = {
-  PageHeader: {
+  Header: {
     shrinkTransition: TIMING_PALETTE.medium,
   },
   Button: {
@@ -90,7 +90,7 @@ const CUSTOM_TIMING_PALETTE = {
 } as const satisfies ComponentPalettes<TimingPalette>;
 
 const CUSTOM_SPACING_PALETTE = {
-  PageHeader: {
+  Header: {
     titleFontSize: SPACING_PALETTE.xxxl,
     titlePadding: SPACING_PALETTE.s,
     logoHeight: "25rem",
