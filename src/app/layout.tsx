@@ -5,6 +5,9 @@ import metadataConfig from "./_config/metaData";
 import StyledComponentsRegistry from "./_components/providers/StyledComponentsRegistry";
 import BodyTemplateProvider from "./_components/providers/BodyTemplateProvider";
 import HTML from "./_components/organisms/HTML";
+import PostHogProvider from "./_components/providers/PostHogProvider";
+import PostHogPageView from "./_components/providers/PostHogProvider/PostHogPageView";
+import { Suspense } from "react";
 
 // METADATA
 
@@ -21,9 +24,14 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <StyledComponentsRegistry>
       <ThemeProvider>
-        <HTML>
-          <BodyTemplateProvider>{children}</BodyTemplateProvider>
-        </HTML>
+        <PostHogProvider>
+          <HTML>
+            <Suspense>
+              <PostHogPageView />
+            </Suspense>
+            <BodyTemplateProvider>{children}</BodyTemplateProvider>
+          </HTML>
+        </PostHogProvider>
       </ThemeProvider>
     </StyledComponentsRegistry>
   );
