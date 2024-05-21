@@ -7,6 +7,7 @@ import BodyTemplateProvider from "./_components/providers/BodyTemplateProvider";
 import HTML from "./_components/organisms/HTML";
 import PostHogProvider from "./_components/providers/PostHogProvider";
 import PostHogPageView from "./_components/providers/PostHogProvider/PostHogPageView";
+import { Suspense } from "react";
 
 // METADATA
 
@@ -25,7 +26,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <ThemeProvider>
         <PostHogProvider>
           <HTML>
-            <PostHogPageView />
+            <Suspense>
+              <PostHogPageView />
+            </Suspense>
             <BodyTemplateProvider>{children}</BodyTemplateProvider>
           </HTML>
         </PostHogProvider>
