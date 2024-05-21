@@ -168,7 +168,7 @@ const eventsTable: EventRow[] = [
         },
       },
       {
-        name: "Potter's Field",
+        name: "Potters Field",
         socialMediaLinks: {
           bandcamp: { href: "https://pottersfieldnj.bandcamp.com/" },
         },
