@@ -2,6 +2,7 @@
 
 import Button from "@/app/_components/atoms/Button";
 import P from "@/app/_components/atoms/P";
+import { generateMediaQuery } from "@/app/_lib/themeHelpers";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -10,15 +11,36 @@ import styled from "styled-components";
 const StyledButton = styled(Button)`
   margin: 0 auto;
   width: 90%;
+  margin-bottom: 4rem;
 `;
 
 const StyledFlyerContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0 auto;
-  gap: 4rem;
   margin-bottom: 2rem;
   width: 90%;
+  flex-wrap: wrap;
+
+  & > img {
+    width: 33%;
+    height: 33%;
+  }
+
+  ${generateMediaQuery("desktop")(`
+    & > img {
+      width: 49%;
+      height: 49%;
+    }
+  `)}
+
+  ${generateMediaQuery("tablet")(`
+    gap: 4rem;
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+  `)}
 `;
 
 const ProvidenceRI = () => {
@@ -39,6 +61,7 @@ const ProvidenceRI = () => {
         costs of the fest, or{" "}
         <b>if you want to donate directly, you can use the button below</b>.
       </P>
+      <StyledButton onClick={handleClick}>Donate</StyledButton>
       <StyledFlyerContainer>
         <Image
           src="/images/posters/providence-5-31-benefit.png"
@@ -47,9 +70,8 @@ const ProvidenceRI = () => {
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: "50%", height: "100%" }}
+          // style={{ width: "100%", height: "100%" }}
         />
-
         <Image
           src="/images/posters/providence-6-1-benefit.png"
           alt="flyer by @romero_a_crow on Instagram"
@@ -57,10 +79,18 @@ const ProvidenceRI = () => {
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: "50%", height: "100%" }}
+          // style={{ width: "100%", height: "100%" }}
+        />
+        <Image
+          src="/images/posters/providence-6-14-benefit.jpg"
+          alt="flyer by @__lex__talionis__ on Instagram"
+          title="flyer by @__lex__talionis__ on Instagram"
+          width={0}
+          height={0}
+          sizes="100vw"
+          // style={{ width: "100%", height: "100%" }}
         />
       </StyledFlyerContainer>
-      <StyledButton onClick={handleClick}>Donate</StyledButton>
     </section>
   );
 };
