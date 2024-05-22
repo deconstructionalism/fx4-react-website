@@ -19,12 +19,12 @@ const StyledFlyerContainer = styled.div`
   justify-content: space-between;
   margin: 0 auto;
   margin-bottom: 2rem;
-  width: 90%;
+  width: 100%;
   flex-wrap: wrap;
 
   & > img {
-    width: 33%;
-    height: 33%;
+    width: 32%;
+    height: 32%;
   }
 
   ${generateMediaQuery("desktop")(`

@@ -7,7 +7,6 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 import styled from "styled-components";
 
 // CONSTANTS
@@ -53,20 +52,20 @@ const EventSocialMediaBar = ({ data }: EventSocialMediaBarProps) => {
 
   const { socialMediaLinks } = data;
 
+  const handleClick = (href: string) => window.open(href, "_blank");
+
   const Links = Object.entries(socialMediaLinks).map(([name, link], index) => {
     if (!link) return null;
     const icon = name as keyof typeof SOCIAL_MEDIA_ICONS;
 
     return (
-      <Link
+      <div
         key={index}
-        href={link.href}
         title={link.title}
-        target="_blank"
-        rel="noopener noreferrer"
+        onClick={() => handleClick(link.href)}
       >
         <StyledSocialMediaIcon icon={SOCIAL_MEDIA_ICONS[icon]} />
-      </Link>
+      </div>
     );
   });
 

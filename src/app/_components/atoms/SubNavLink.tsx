@@ -4,6 +4,7 @@ import { SubNavItemConfig } from "@/app/_config/nav.d";
 import { usePathname } from "next/navigation";
 import styled from "styled-components";
 import Link from "./Link";
+import { useRef } from "react";
 
 // CONSTANTS
 
@@ -37,6 +38,16 @@ const SubNavLink = ({
 
   const pathName = usePathname();
   const isActive = pathName === href;
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  // EVENT HANDLERS
+
+  const handleClick = () => {
+    const current = ref.current;
+    if (current && !externalLink) {
+      scrollTo({ top: 1, behavior: "smooth" });
+    }
+  };
 
   // LOGIC
 
@@ -48,10 +59,12 @@ const SubNavLink = ({
   return (
     <StyledLink
       href={href}
+      ref={ref}
       rel={rel}
       target={target}
       $isActive={isActive}
-      scroll={true}
+      onClick={handleClick}
+      scroll={false}
     >
       {typeof title === "string" ? <span>{title}</span> : title}
     </StyledLink>
