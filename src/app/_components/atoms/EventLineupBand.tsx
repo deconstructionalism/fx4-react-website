@@ -5,9 +5,10 @@ import styled from "styled-components";
 
 const StyledBand = styled.div<{ $hasLink: boolean }>(
   ({ theme, $hasLink }) => `
-  font-family: ${theme.fonts.heading};
+  font-family: ${theme.fonts.body};
   text-align: center;
   font-size: ${theme.spacings.l};
+  text-transform: uppercase;
 
   & > span  {
     cursor: ${$hasLink ? "pointer" : "inherit"};
