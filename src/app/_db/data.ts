@@ -231,7 +231,7 @@ const eventsTable: EventRow[] = [
         },
       },
       {
-        name: "Lal",
+        name: "lal",
         socialMediaLinks: {
           bandcamp: { href: "https://lalnyc.bandcamp.com/" },
         },
