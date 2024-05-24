@@ -236,6 +236,9 @@ const eventsTable: EventRow[] = [
           bandcamp: { href: "https://lalnyc.bandcamp.com/" },
         },
       },
+      {
+        name: "Air Bag",
+      },
     ],
   },
   {
@@ -276,6 +279,14 @@ const eventsTable: EventRow[] = [
         socialMediaLinks: {
           bandcamp: {
             href: "https://focoizm.bandcamp.com/",
+          },
+        },
+      },
+      {
+        name: "Mercury Symbol",
+        socialMediaLinks: {
+          bandcamp: {
+            href: "https://mercurysymbol.bandcamp.com/",
           },
         },
       },

@@ -31,9 +31,11 @@ const EventLineupTable = ({ data }: EventLineupTableProps) => {
 
   // LOGIC
 
-  const Bands = lineup.map((bandData, index) => {
-    return <EventLineupBand key={index} bandData={bandData} />;
-  });
+  const Bands = lineup
+    .sort((a, b) => a.name.length - b.name.length)
+    .map((bandData, index) => {
+      return <EventLineupBand key={index} bandData={bandData} />;
+    });
 
   // JSX
 
