@@ -240,6 +240,10 @@ const eventsTable: EventRow[] = [
         name: "Air Bag",
       },
     ],
+    eventPoster: {
+      src: "/images/posters/providence.jpg",
+      title: "by Pippi Zornova (https://www.pippizornoza.com/).",
+    }
   },
   {
     index: 2,
