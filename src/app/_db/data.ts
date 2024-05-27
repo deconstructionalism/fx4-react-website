@@ -231,7 +231,7 @@ const eventsTable: EventRow[] = [
         },
       },
       {
-        name: "Lal",
+        name: "lal",
         socialMediaLinks: {
           bandcamp: { href: "https://lalnyc.bandcamp.com/" },
         },
@@ -240,6 +240,10 @@ const eventsTable: EventRow[] = [
         name: "Air Bag",
       },
     ],
+    eventPoster: {
+      src: "/images/posters/providence.jpg",
+      title: "by Pippi Zornova (https://www.pippizornoza.com/).",
+    }
   },
   {
     index: 2,
