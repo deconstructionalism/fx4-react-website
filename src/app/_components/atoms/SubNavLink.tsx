@@ -1,10 +1,12 @@
 "use client";
 
-import { SubNavItemConfig } from "@/app/_config/nav.d";
 import { usePathname } from "next/navigation";
-import styled from "styled-components";
-import Link from "./Link";
 import { useRef } from "react";
+import styled, { css } from "styled-components";
+
+import Link from "atoms/Link";
+
+import { SubNavItemConfig } from "config/nav.d";
 
 // CONSTANTS
 
@@ -13,20 +15,27 @@ const HOVER_SCALING = 1.2;
 // STYLES
 
 const StyledLink = styled(Link)<{ $isActive: boolean }>(
-  ({ theme, $isActive }) => `
-  height: ${theme._spacings.SubNavLink.height};
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: ${theme.fonts.heading};
-  color: ${theme.colors.black};
-  font-size: ${theme.spacings.l};
-  position: relative;
-  transition: transform ${theme.timings.extraFast} ease, color ${theme._timings.Link.transitionSpeed} ease;
-  transform: ${$isActive ? `scale(${HOVER_SCALING})` : "none"};
-  pointer-events: ${$isActive ? "none" : "auto"};
-`,
+  ({ theme, $isActive }) => css`
+    pointer-events: ${$isActive ? "none" : "auto"};
+
+    position: relative;
+    transform: ${$isActive ? `scale(${HOVER_SCALING})` : "none"};
+
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+    height: ${theme._spacings.SubNavLink.height};
+
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.spacings.l};
+    color: ${theme.colors.black};
+
+    transition:
+      transform ${theme.timings.extraFast} ease,
+      color ${theme._timings.Link.transitionSpeed} ease;
+  `,
 );
 
 const SubNavLink = ({

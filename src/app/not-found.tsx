@@ -1,16 +1,17 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled, { useTheme } from "styled-components";
 import {
   faFaceDizzy,
   faFaceGrinTongue,
   faFaceGrinTongueWink,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
-import { timingToMs } from "./_lib/themeHelpers";
-import sleep from "./_lib/sleep";
+import { useState } from "react";
+import styled, { useTheme } from "styled-components";
+
+import sleep from "lib/sleep";
+import { timingToMs } from "lib/themeHelpers";
 
 // STYLED
 

@@ -1,34 +1,43 @@
 "use client";
 
-import styled from "styled-components";
-import cursor from "../_db/cursor";
-import { generateMediaQuery } from "../_lib/themeHelpers";
-import LocationBanner from "../_components/atoms/LocationBanner";
+import { useEffect } from "react";
+import styled, { css } from "styled-components";
+
+import LocationBanner from "atoms/LocationBanner";
+
+import loadImagesAsync from "lib/loadImagesAsync";
+import { generateMediaQuery } from "lib/themeHelpers";
+
+import cursor from "@/app/_db/cursor";
 
 // STYLES
 
 const StyledLocationBannerContainer = styled.section(
-  ({ theme }) => `
-    width: 100%;
-    height: 80vh;
-    background: ${theme.colors.black};
+  ({ theme }) => css`
     display: flex;
     flex-direction: row;
 
-    ${generateMediaQuery("tablet")(`
+    width: 100%;
+    height: 80vh;
+
+    background: ${theme.colors.black};
+
+    ${generateMediaQuery("tablet")(css`
       flex-direction: column;
 
-      & > *:not(:first-of-type), > *:not(:last-of-type) {
+      & > *:not(:first-of-type),
+      > *:not(:last-of-type) {
+        border: ${theme.spacings.xxxs};
         border-top: ${theme.spacings.xxxs} solid ${theme.colors.white};
         border-bottom: ${theme.spacings.xxxs} solid ${theme.colors.white};
       }
     `)}
 
     & > *:not(:first-of-type), > *:not(:last-of-type) {
-      border-left: ${theme.spacings.xxxs} solid ${theme.colors.white};
       border-right: ${theme.spacings.xxxs} solid ${theme.colors.white};
+      border-left: ${theme.spacings.xxxs} solid ${theme.colors.white};
     }
-`,
+  `,
 );
 
 const Locations = () => {

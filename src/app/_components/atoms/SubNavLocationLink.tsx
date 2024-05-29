@@ -1,40 +1,48 @@
 "use client";
 
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 // STYLES
 
 const StyledLocation = styled.div<{ $dateText: string; $isHovering: boolean }>(
-  ({ theme, $dateText, $isHovering }) => `
-  width: 20rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: ${theme.fonts.body};
-  font-weight: bold;
-  font-size: ${theme.spacings.l};
-  color: ${theme.colors.black};
-  position: relative;
-  padding: ${theme.spacings.xxs} 0;
+  ({ theme, $dateText, $isHovering }) => css`
+    position: relative;
 
-  &::after {
-    background: ${theme.colors.white};
-    color: ${theme.colors.black};
-    transition: opacity ${theme.timings.extraFast} ease;
-    opacity: ${$isHovering ? 1 : 0};
-    content: "${$dateText}";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-  }
-`,
+    justify-content: center;
+
+    width: 20rem;
+    padding: ${theme.spacings.xxs} 0;
+
+    font-family: ${theme.fonts.body};
+    font-size: ${theme.spacings.l};
+    font-weight: bold;
+    color: ${theme.colors.black};
+
+    &::after {
+      content: "${$dateText}";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      color: ${theme.colors.black};
+
+      opacity: ${$isHovering ? 1 : 0};
+      background: ${theme.colors.white};
+
+      transition: opacity ${theme.timings.extraFast} ease;
+    }
+  `,
 );
 
 // TYPES

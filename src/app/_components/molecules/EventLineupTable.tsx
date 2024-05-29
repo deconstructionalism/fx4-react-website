@@ -1,20 +1,22 @@
-// STYLES
+import styled, { css } from "styled-components";
+
+import Divider from "atoms/Divider";
+import EventLineupBand from "atoms/EventLineupBand";
+
+import { generateMediaQuery } from "lib/themeHelpers";
 
 import { EventRow } from "@/app/_db/db";
-import styled from "styled-components";
-import Divider from "../atoms/Divider";
-import EventLineupBand from "../atoms/EventLineupBand";
-import { generateMediaQuery } from "@/app/_lib/themeHelpers";
+
+// STYLES
 
 const StyledLineup = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 
   & > * {
     width: 33.3333%;
 
-    ${generateMediaQuery("tablet")(`
+    ${generateMediaQuery("tablet")(css`
       width: 50%;
     `)}
   }

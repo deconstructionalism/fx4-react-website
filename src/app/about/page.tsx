@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import P from "@/app/_components/atoms/P";
+import Image from "atoms/Image";
+import P from "atoms/P";
 
 const About = () => {
   return (
@@ -10,10 +10,6 @@ const About = () => {
         src="/images/poly-segmented.jpg"
         alt="Poly Styrene collage by Dave Fischer"
         title="Poly Styrene collage by Dave Fischer"
-        width={0}
-        height={0}
-        sizes="100vw"
-        style={{ width: "100%", height: "auto" }}
       />
       <P>
         Poly Styrene was born on July 3rd 1957, and grew up to head the

@@ -1,30 +1,34 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 // STYLES
 
 const Button = styled.button(
-  ({ theme }) => `
-  background-color: ${theme.colors.black};
-  color: ${theme.colors.white};
-  border: ${theme.spacings.xxs} solid ${theme.colors.black};
-  border-radius: ${theme.spacings.m};
-  padding: ${theme.spacings.l} ${theme.spacings.l};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: ${theme.spacings.m};
+  ({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  transition: all ${theme._timings.Button.transitionSpeed} ease;
+    padding: ${theme.spacings.l} ${theme.spacings.l};
 
-  &:focus {
-    border-color: ${theme.colors.black};
+    font-size: ${theme.spacings.m};
     color: ${theme.colors.white};
-  }
-  &:hover {
-    border-color: ${theme.colors.black};
-    background-color: ${theme._colors.Button.hoverColor};
-  }
-`,
+
+    background-color: ${theme.colors.black};
+    border: ${theme.spacings.xxs} solid ${theme.colors.black};
+    border-radius: ${theme.spacings.m};
+
+    transition: all ${theme._timings.Button.transitionSpeed} ease;
+
+    &:focus {
+      color: ${theme.colors.white};
+      border-color: ${theme.colors.black};
+    }
+
+    &:hover {
+      background-color: ${theme._colors.Button.hoverColor};
+      border-color: ${theme.colors.black};
+    }
+  `,
 );
 
 export default Button;

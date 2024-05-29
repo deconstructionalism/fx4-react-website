@@ -8,7 +8,7 @@ import type {
   SpacingBasis,
   SpacingPalette,
   TimingPalette,
-} from "./theme.d";
+} from "config/theme.d";
 
 // SPACING BASIS
 

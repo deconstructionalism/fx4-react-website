@@ -1,24 +1,25 @@
+import styled, { css } from "styled-components";
+
 import { BandData } from "@/app/_db/db";
-import styled from "styled-components";
 
 // STYLES
 
 const StyledBand = styled.div<{ $hasLink: boolean }>(
-  ({ theme, $hasLink }) => `
-  font-family: ${theme.fonts.body};
-  text-align: center;
-  font-size: ${theme.spacings.l};
-  text-transform: uppercase;
+  ({ theme, $hasLink }) => css`
+    font-family: ${theme.fonts.body};
+    font-size: ${theme.spacings.l};
+    text-align: center;
+    text-transform: uppercase;
 
-  & > span  {
-    cursor: ${$hasLink ? "pointer" : "inherit"};
-    transition: color ${theme._timings.Link.transitionSpeed} ease;
+    & > span {
+      cursor: ${$hasLink ? "pointer" : "inherit"};
+      transition: color ${theme._timings.Link.transitionSpeed} ease;
 
-    &:hover {
-      color: ${$hasLink ? theme.colors.primary : "inherit"};
+      &:hover {
+        color: ${$hasLink ? theme.colors.primary : "inherit"};
+      }
     }
-  }
-`,
+  `,
 );
 
 interface EventLineupBandProps {

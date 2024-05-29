@@ -1,6 +1,5 @@
 // DATA TABLES
-
-import { EventRow } from "./db.d";
+import { EventRow } from "@/app/_db/db.d";
 
 const eventsTable: EventRow[] = [
   {
@@ -22,6 +21,7 @@ const eventsTable: EventRow[] = [
         title: "Instagram",
       },
     },
+    eventLinks: {},
     ticketCost: "$5",
     lineup: [
       {
@@ -132,10 +132,22 @@ const eventsTable: EventRow[] = [
         title: "Instagram",
       },
     },
-    ticketLink: {
-      href: "https://www.zeffy.com/en-US/ticketing/2a39a78f-08a8-4cc6-b559-4ac93a61e5c6",
-      title: "Buy tickets now!",
-      externalLink: true,
+    eventLinks: {
+      ticketLink: {
+        href: "https://www.zeffy.com/en-US/ticketing/2a39a78f-08a8-4cc6-b559-4ac93a61e5c6",
+        title: "Buy tickets now!",
+        externalLink: true,
+      },
+      merchandiseLink: {
+        href: "https://fx4fest.bigcartel.com",
+        title: "Get official drip!",
+        externalLink: true,
+      },
+      donationLink: {
+        href: "https://gofund.me/bd65c9a6",
+        title: "Donate to the fest and fundraiser",
+        externalLink: true,
+      },
     },
     ticketCost: "$25, all ages",
     lineup: [
@@ -242,8 +254,8 @@ const eventsTable: EventRow[] = [
     ],
     eventPoster: {
       src: "/images/posters/providence.jpg",
-      title: "by Pippi Zornova (https://www.pippizornoza.com/).",
-    }
+      title: "by Pippi Zornova.",
+    },
   },
   {
     index: 2,
@@ -259,6 +271,7 @@ const eventsTable: EventRow[] = [
       title: "Photo of c?c? by ??.",
     },
     socialMediaLinks: {},
+    eventLinks: {},
     lineup: [
       {
         name: "Pharmakon",

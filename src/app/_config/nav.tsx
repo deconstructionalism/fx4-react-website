@@ -1,14 +1,16 @@
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import {
+  faCircleQuestion,
   faCrosshairs,
   faEnvelope,
-  faCircleQuestion,
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
-import { NavItemConfig, SubNavItemConfig } from "../_config/nav.d";
-import cursor from "../_db/cursor";
-import { eventToURL } from "../_lib/databaseTransformers";
-import { EventRow } from "../_db/db.d";
+
+import { NavItemConfig, SubNavItemConfig } from "config/nav.d";
+import { eventToURL } from "lib/databaseTransformers";
+
+import cursor from "@/app/_db/cursor";
+import { EventRow } from "@/app/_db/db.d";
 
 // HELPER FUNCTIONS
 

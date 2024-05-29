@@ -1,4 +1,4 @@
-import { eventsTable } from "./data";
+import { eventsTable } from "@/app/_db/data";
 
 // DATABASE
 // obviously a mock

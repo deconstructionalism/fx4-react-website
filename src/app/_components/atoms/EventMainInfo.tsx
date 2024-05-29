@@ -1,46 +1,52 @@
+import styled, { css } from "styled-components";
+
+import Divider from "atoms/Divider";
+
+import { formatDateForDisplay } from "lib/databaseTransformers";
+
 import { EventRow } from "@/app/_db/db";
-import { formatDateForDisplay } from "@/app/_lib/databaseTransformers";
-import styled from "styled-components";
-import Divider from "./Divider";
 
 // STYLES
 
 const StyledFestName = styled.div(
-  ({ theme }) => `
-  display: flex;
-  justify-content: center;
+  ({ theme }) => css`
+    display: flex;
+    justify-content: center;
 
-  & > h1 {
-    font-family: ${theme.fonts.heading};
-    font-size: ${theme.spacings.xl};
-    font-weight: bold;
-    margin-bottom: ${theme.spacings.s};
-    letter-spacing: ${theme.spacings.xxs};
-    color: ${theme.colors.primary};
-    background-color: ${theme.colors.black};
-    padding: ${theme.spacings.s} ${theme.spacings.m};
-  }
-`,
+    & > h1 {
+      margin-bottom: ${theme.spacings.s};
+      padding: ${theme.spacings.s} ${theme.spacings.m};
+
+      font-family: ${theme.fonts.heading};
+      font-size: ${theme.spacings.xl};
+      font-weight: bold;
+      color: ${theme.colors.primary};
+      letter-spacing: ${theme.spacings.xxs};
+
+      background-color: ${theme.colors.black};
+    }
+  `,
 );
 
 const StyledTitleText = styled.h2(
-  ({ theme }) => `
-  font-size: ${theme.spacings.xl};
-  font-family: ${theme.fonts.body};
-  text-transform: uppercase;
-  margin-bottom: ${theme.spacings.xxs};
-  text-align: center;
-  font-weight: bold;
-`,
+  ({ theme }) => css`
+    margin-bottom: ${theme.spacings.xxs};
+
+    font-family: ${theme.fonts.body};
+    font-size: ${theme.spacings.xl};
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+  `,
 );
 
 const StyledSubTitleText = styled.h3(
-  ({ theme }) => `
-  font-size: ${theme.spacings.l};
-  font-family: ${theme.fonts.body};
-  margin-bottom: ${theme.spacings.xxs};
-  text-align: center;
-`,
+  ({ theme }) => css`
+    margin-bottom: ${theme.spacings.xxs};
+    font-family: ${theme.fonts.body};
+    font-size: ${theme.spacings.l};
+    text-align: center;
+  `,
 );
 
 interface EventMainInfoProps {

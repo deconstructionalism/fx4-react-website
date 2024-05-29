@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:css": "stylelint '**/*.{css,tsx,ts,jsx,js}'",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
@@ -18,16 +20,23 @@
     "posthog-js": "^1.131.4",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^6.1.9"
+    "styled-components": "^6.1.9",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
+    "eslint": "^8.57.0",
     "eslint-config-next": "14.2.1",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "3.2.5",
+    "eslint-plugin-no-relative-import-paths": "^1.5.4",
+    "postcss-styled-syntax": "^0.6.4",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.6.0",
+    "stylelint-config-clean-order": "^5.4.2",
+    "stylelint-config-standard": "^36.0.0",
     "typescript": "^5"
   }
 }

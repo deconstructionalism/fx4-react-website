@@ -1,14 +1,13 @@
 // STYLES
-
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Divider = styled.hr(
-  ({ theme }) => `
-  border: 0;
-  border-top: 1px solid ${theme.colors.black};
-  margin: ${theme.spacings.m} auto;
-  width: 100%;
-`,
+  ({ theme }) => css`
+    width: 100%;
+    margin: ${theme.spacings.m} auto;
+    border: 0;
+    border-top: ${theme.spacings.xxxs} solid ${theme.colors.black};
+  `,
 );
 
 export default Divider;

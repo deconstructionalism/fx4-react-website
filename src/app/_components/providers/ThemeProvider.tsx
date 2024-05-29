@@ -1,7 +1,8 @@
 "use client";
 
-import theme from "@/app/_config/theme";
 import { ThemeProvider } from "styled-components";
+
+import theme from "config/theme";
 
 // TYPES
 

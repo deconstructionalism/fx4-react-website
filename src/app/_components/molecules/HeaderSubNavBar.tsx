@@ -1,20 +1,24 @@
 "use client";
 
-import SubNavLink from "../atoms/SubNavLink";
-import styled from "styled-components";
-import { SubNavItemConfig } from "@/app/_config/nav.d";
+import styled, { css } from "styled-components";
+
+import SubNavLink from "atoms/SubNavLink";
+
+import { SubNavItemConfig } from "config/nav.d";
 
 // STYLES
 
 const StyledSubNav = styled.nav(
-  ({ theme }) => `
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: ${theme._spacings.HeaderSubNavBar.gap};
-  text-transform: uppercase;
-  padding-top: ${theme._spacings.HeaderSubNavBar.paddingTop};
-`,
+  ({ theme }) => css`
+    display: flex;
+    flex-direction: row;
+    gap: ${theme._spacings.HeaderSubNavBar.gap};
+    justify-content: center;
+
+    padding-top: ${theme._spacings.HeaderSubNavBar.paddingTop};
+
+    text-transform: uppercase;
+  `,
 );
 
 interface HeaderSubNavBarProps {

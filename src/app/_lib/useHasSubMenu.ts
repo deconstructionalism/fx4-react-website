@@ -1,5 +1,6 @@
 import { useSelectedLayoutSegments } from "next/navigation";
-import NAV_CONFIG from "../_config/nav";
+
+import NAV_CONFIG from "config/nav";
 
 const useHasSubMenu = () => {
   // STATE

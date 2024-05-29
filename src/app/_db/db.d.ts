@@ -40,16 +40,21 @@ export interface BandData {
   website?: LinkData;
 }
 
+export interface EventLinkData {
+  websiteLink?: LinkData;
+  merchandiseLink?: LinkData;
+  donationLink?: LinkData;
+  ticketLink?: LinkData;
+}
+
 export interface EventRow extends TableRow {
   index: number;
   location: LocationData;
   date: Date;
   narrowBannerImage: ImageData;
   socialMediaLinks: SocialMediaLinkData;
-  websiteLink?: LinkData;
+  eventLinks: EventLinkData;
   ticketCost?: string;
-  ticketLink?: LinkData;
   lineup: BandData[];
   eventPoster?: ImageData;
-  website?: LinkData;
 }

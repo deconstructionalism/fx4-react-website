@@ -1,7 +1,9 @@
 // PALETTE HELPER FUNCTIONS
+import { RuleSet } from "styled-components";
+import { css } from "styled-components";
 
-import theme, { Theme } from "../_config/theme";
-import type { Spacing, Timing } from "../_config/theme.d";
+import theme, { Theme } from "config/theme";
+import type { Spacing, Timing } from "config/theme.d";
 
 // TYPE GUARDS
 
@@ -58,8 +60,17 @@ const generateMediaQuery = (
   breakpoint: keyof Theme["breakpoints"],
   type: MediaFeatureType = "max-width",
 ) => {
-  return (css: string) =>
-    `@media (${type}: ${theme.breakpoints[breakpoint]}px) { ${css} }`;
+  /**
+   * Function that takes `styled-components` CSS and returns a media
+   * query wrapped around it.
+   */
+  return (block: RuleSet<object>) => {
+    const blockCss = [...block].join("");
+    const wrapped = `@media (${type}: ${theme.breakpoints[breakpoint]}px) { ${blockCss} }`;
+    return css`
+      ${wrapped}
+    `;
+  };
 };
 
 /**

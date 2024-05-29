@@ -1,22 +1,16 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import cursor from "../_db/cursor";
-import { eventToURL } from "../_lib/databaseTransformers";
-import styled from "styled-components";
-import EventSocialMediaBar from "../_components/atoms/EventSocialMediaBar";
-import EventTicketButton from "../_components/atoms/EventTicketButton";
-import EventPoster from "../_components/atoms/EventPoster";
-import EventMainInfo from "../_components/atoms/EventMainInfo";
-import EventLineupTable from "../_components/molecules/EventLineupTable";
 
-// STYLES
+import EventLineupTable from "molecules/EventLineupTable";
 
-const StyledSection = styled.section(
-  ({ theme }) => `
-  padding-top: ${theme.spacings.l};
-`,
-);
+import EventLinkBar from "atoms/EventLinkBar";
+import EventMainInfo from "atoms/EventMainInfo";
+import EventPoster from "atoms/EventPoster";
+
+import { eventToURL } from "lib/databaseTransformers";
+
+import cursor from "@/app/_db/cursor";
 
 // TYPES
 
@@ -44,14 +38,13 @@ const LocationPageLayout = ({ children }: LocationPageLayoutProps) => {
   if (!eventData) return <>{children}</>;
 
   return (
-    <StyledSection>
+    <section>
       <EventMainInfo data={eventData} />
-      <EventTicketButton data={eventData} />
+      <EventLinkBar data={eventData} />
       <EventPoster data={eventData} />
       <EventLineupTable data={eventData} />
       {children}
-      <EventSocialMediaBar data={eventData} />
-    </StyledSection>
+    </section>
   );
 };
 

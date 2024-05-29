@@ -1,0 +1,22 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-clean-order"],
+  "overrides": [
+    {
+      "files": ["*.css"],
+      "ignoreFiles": [
+        "src/app/_styles/normalize.css",
+        "src/app/_styles/skeleton.css"
+      ],
+      "rules": {}
+    },
+    {
+      "files": ["*.{js,ts,jsx,tsx}"],
+      "customSyntax": "postcss-styled-syntax",
+      "rules": {
+        "unit-allowed-list": ["rem", "%", "deg", "vh", "vw"],
+        "color-named": "never",
+        "color-no-hex": true
+      }
+    }
+  ]
+}

@@ -1,52 +1,104 @@
 "use client";
 
-import Button from "@/app/_components/atoms/Button";
-import P from "@/app/_components/atoms/P";
-import { generateMediaQuery } from "@/app/_lib/themeHelpers";
-import Image from "next/image";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+import Button from "atoms/Button";
+import Image from "atoms/Image";
+import P from "atoms/P";
+
+import { generateMediaQuery } from "lib/themeHelpers";
+
+import { ImageData } from "@/app/_db/db";
+import useImagePreview from "@/app/_lib/useImagePreview";
 
 // STYLES
 
 const StyledButton = styled(Button)`
-  margin: 0 auto;
   width: 90%;
+  margin: 0 auto;
   margin-bottom: 4rem;
 `;
 
 const StyledFlyerContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 2rem;
-  width: 100%;
-  flex-wrap: wrap;
 
-  & > img {
+  & > div {
     width: 32%;
     height: 32%;
   }
 
-  ${generateMediaQuery("desktop")(`
-    & > img {
+  ${generateMediaQuery("desktop")(css`
+    & > div {
       width: 49%;
       height: 49%;
     }
   `)}
 
-  ${generateMediaQuery("tablet")(`
+  ${generateMediaQuery("tablet")(css`
     gap: 4rem;
-    & > img {
+
+    & > div {
       width: 100%;
       height: 100%;
     }
   `)}
 `;
 
+const StyledImage = styled(Image)`
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+`;
+
 const ProvidenceRI = () => {
+  // STATE
+
+  const openGallery = useImagePreview((state) => state.openGallery);
+
+  // DATA
+
+  const benefitImages: ImageData[] = [
+    {
+      src: "/images/posters/providence-5-31-benefit.png",
+      title: "flyer by @buttcliff on Instagram",
+    },
+    {
+      src: "/images/posters/providence-6-1-benefit.png",
+      title: "flyer by @romero_a_crow on Instagram",
+    },
+    {
+      src: "/images/posters/providence-6-14-benefit.jpg",
+      title: "flyer by @__lex__talionis__ on Instagram",
+    },
+  ];
+
   // EVENT HANDLERS
 
-  const handleClick = () => window.open("https://gofund.me/2725d7e0", "_blank");
+  const handleDonationClick = () =>
+    window.open("https://gofund.me/2725d7e0", "_blank");
+
+  const handleImageClick = (index: number) => {
+    openGallery(benefitImages, index);
+  };
+
+  // LOGIC
+
+  const BenefitFlyers = benefitImages.map((image, index) => (
+    <StyledImage
+      key={index}
+      src={image.src}
+      alt={image.title}
+      title={image.title}
+      onClick={() => handleImageClick(index)}
+      includeTitle
+    />
+  ));
 
   // JSX
 
@@ -61,36 +113,8 @@ const ProvidenceRI = () => {
         costs of the fest, or{" "}
         <b>if you want to donate directly, you can use the button below</b>.
       </P>
-      <StyledButton onClick={handleClick}>Donate</StyledButton>
-      <StyledFlyerContainer>
-        <Image
-          src="/images/posters/providence-5-31-benefit.png"
-          alt="flyer by @buttcliff on Instagram"
-          title="flyer by @buttcliff on Instagram"
-          width={0}
-          height={0}
-          sizes="100vw"
-          // style={{ width: "100%", height: "100%" }}
-        />
-        <Image
-          src="/images/posters/providence-6-1-benefit.png"
-          alt="flyer by @romero_a_crow on Instagram"
-          title="flyer by @romero_a_crow on Instagram"
-          width={0}
-          height={0}
-          sizes="100vw"
-          // style={{ width: "100%", height: "100%" }}
-        />
-        <Image
-          src="/images/posters/providence-6-14-benefit.jpg"
-          alt="flyer by @__lex__talionis__ on Instagram"
-          title="flyer by @__lex__talionis__ on Instagram"
-          width={0}
-          height={0}
-          sizes="100vw"
-          // style={{ width: "100%", height: "100%" }}
-        />
-      </StyledFlyerContainer>
+      <StyledButton onClick={handleDonationClick}>Donate</StyledButton>
+      <StyledFlyerContainer>{BenefitFlyers}</StyledFlyerContainer>
     </section>
   );
 };
