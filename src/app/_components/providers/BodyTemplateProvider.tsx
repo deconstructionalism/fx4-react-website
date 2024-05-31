@@ -1,9 +1,10 @@
 "use client";
 
 import { useSelectedLayoutSegments } from "next/navigation";
-import LandingTemplate from "@/app/_components/templates/LandingTemplate";
-import PageTemplate from "@/app/_components/templates/PageTemplate";
-import NotFoundTemplate from "@/app/_components/templates/NotFoundTemplate";
+
+import LandingTemplate from "templates/LandingTemplate";
+import NotFoundTemplate from "templates/NotFoundTemplate";
+import PageTemplate from "templates/PageTemplate";
 
 interface BodyTemplateProviderProps {
   children: React.ReactNode;

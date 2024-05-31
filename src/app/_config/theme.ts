@@ -8,7 +8,8 @@ import type {
   SpacingBasis,
   SpacingPalette,
   TimingPalette,
-} from "./theme.d";
+  ZIndexPalette,
+} from "config/theme.d";
 
 // SPACING BASIS
 
@@ -64,6 +65,12 @@ const FONT_PALETTE = {
   body: "nimbus-sans, sans-serif",
 } as const satisfies Record<string, FontFamily>;
 
+const Z_INDEX_PALETTE = {
+  navigation: 100,
+  modal: 200,
+  modalControl: 201,
+} as const satisfies Record<string, number>;
+
 // CUSTOM PALETTES
 // Use these to store named palette value, or computed values combining basic
 // palette values and/or other numeric calculations (for numerical palettes).
@@ -79,7 +86,7 @@ const CUSTOM_COLOR_PALETTE = {
 
 const CUSTOM_TIMING_PALETTE = {
   Header: {
-    shrinkTransition: TIMING_PALETTE.medium,
+    shrinkTransition: TIMING_PALETTE.fast,
   },
   Button: {
     transitionSpeed: TIMING_PALETTE.extraFast,
@@ -108,6 +115,9 @@ const CUSTOM_SPACING_PALETTE = {
     gap: SPACING_PALETTE.s,
     paddingTop: SPACING_PALETTE.s,
   },
+  Nav: {
+    expandedWidth: "25rem",
+  },
   SubNavLink: {
     height: "4rem",
   },
@@ -115,6 +125,9 @@ const CUSTOM_SPACING_PALETTE = {
     titleLineHeight: "12rem",
   },
 } as const satisfies ComponentPalettes<SpacingPalette>;
+
+const CUSTOM_Z_INDEX_PALETTE =
+  {} as const satisfies ComponentPalettes<ZIndexPalette>;
 
 // THEME
 
@@ -125,6 +138,8 @@ const theme = {
   _spacings: CUSTOM_SPACING_PALETTE,
   timings: TIMING_PALETTE,
   _timings: CUSTOM_TIMING_PALETTE,
+  zIndex: Z_INDEX_PALETTE,
+  _zIndex: CUSTOM_Z_INDEX_PALETTE,
   fonts: FONT_PALETTE,
   spacingBasis: SPACING_BASIS,
   breakpoints: MEDIA_BREAKPOINTS,

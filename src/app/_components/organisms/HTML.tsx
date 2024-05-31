@@ -1,41 +1,42 @@
 "use client";
 
-import styled from "styled-components";
-import { generateMediaQuery } from "@/app/_lib/themeHelpers";
+import styled, { css } from "styled-components";
+
+import { generateMediaQuery } from "lib/themeHelpers";
 
 // STYLES
 
 const StyledHTML = styled.html(
-  ({ theme }) => `
-  font-size: ${theme.spacingBasis};
+  ({ theme }) => css`
+    /* Firefox and Chrome Scrollbar Settings */
+    scrollbar-color: ${theme.colors.black} ${theme.colors.white};
+    scrollbar-width: thin;
 
-  /* Safari Scrollbar Settings */
-  ::-webkit-scrollbar {
-    background-color: ${theme.colors.white};
-    display: auto;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: ${theme.colors.black};
-    border-radius: ${theme.spacings.m};
-    border: ${theme.spacings.xxs} solid ${theme.colors.white};
-  }
-
-  /* Firefox and Chrome Scrollbar Settings */
-  scrollbar-color: ${theme.colors.black} ${theme.colors.white};
-  scrollbar-width: thin;
-
-  ${generateMediaQuery("mobile")(`
-    font-size: 2vw;
+    /** REM basis */
+    font-size: ${theme.spacingBasis};
 
     /* Safari Scrollbar Settings */
     ::-webkit-scrollbar {
-      display: none;
+      display: auto;
+      background-color: ${theme.colors.white};
     }
 
-    /* Firefox and Chrome Scrollbar Settings */
-    scrollbar-width: none;
-  `)}
+    ::-webkit-scrollbar-thumb {
+      background-color: ${theme.colors.black};
+      border: ${theme.spacings.xxs} solid ${theme.colors.white};
+      border-radius: ${theme.spacings.m};
+    }
+
+    ${generateMediaQuery("mobile")(css`
+      /* Firefox and Chrome Scrollbar Settings */
+      scrollbar-width: none;
+      font-size: 2vw;
+
+      /* Safari Scrollbar Settings */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    `)}
   `,
 );
 

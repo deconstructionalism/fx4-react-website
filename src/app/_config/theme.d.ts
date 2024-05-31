@@ -14,9 +14,14 @@ export type FontFamily =
 export type ColorPalette<T extends string = string> = Record<T, Color>;
 export type SpacingPalette<T extends string = string> = Record<T, Spacing>;
 export type TimingPalette<T extends string = string> = Record<T, Timing>;
+export type ZIndexPalette<T extends string = string> = Record<T, number>;
 
 // custom palette types organized by component name
-type PaletteTypes = ColorPalette | SpacingPalette | TimingPalette;
+type PaletteTypes =
+  | ColorPalette
+  | SpacingPalette
+  | TimingPalette
+  | ZIndexPalette;
 type ComponentPalettes<T extends PaletteTypes> = Record<string, T>;
 
 // keys required for each basic palette

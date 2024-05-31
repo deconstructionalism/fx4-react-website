@@ -1,104 +1,116 @@
 "use client";
 
-import { addThemeValues } from "@/app/_lib/themeHelpers";
 import { useSelectedLayoutSegments } from "next/navigation";
-import Logo from "@/app/_components/atoms/Logo";
-import styled from "styled-components";
-import HeaderSubNavBar from "./HeaderSubNavBar";
-import useHasSubMenu from "@/app/_lib/useHasSubMenu";
 import { useRouter } from "next/navigation";
+import styled, { css } from "styled-components";
+
+import HeaderSubNavBar from "molecules/HeaderSubNavBar";
+
+import Logo from "atoms/Logo";
+
+import { addThemeValues } from "lib/themeHelpers";
+import useHasSubMenu from "lib/useHasSubMenu";
 
 // STYLES
 
 const StyledHeader = styled.header<{ $hasSubMenu: boolean }>(
-  ({ theme, $hasSubMenu }) => `
-  position: sticky;
-  top: 0;
-  display:flex;
-  flex-direction: column;
-  transition: all ${theme._timings.Header.shrinkTransition} ease;
-  max-width: ${theme._spacings.Header.maxWidth};
-  margin-left: auto;
-  margin-right: auto;
-  height: ${addThemeValues(
-    theme._spacings.Header.titlePadding,
-    theme._spacings.Header.titlePadding,
-    theme._spacings.Header.titleFontSize,
-  )};
-  z-index: 10;
+  ({ theme, $hasSubMenu }) => css`
+    position: sticky;
+    top: 0;
 
-  padding-bottom: ${
-    $hasSubMenu
+    display: flex;
+    flex-direction: column;
+
+    max-width: ${theme._spacings.Header.maxWidth};
+    height: ${addThemeValues(
+      theme._spacings.Header.titlePadding,
+      theme._spacings.Header.titlePadding,
+      theme._spacings.Header.titleFontSize,
+    )};
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: ${$hasSubMenu
       ? addThemeValues(
           theme._spacings.SubNavLink.height,
           theme._spacings.HeaderSubNavBar.paddingTop,
         )
-      : 0
-  };
+      : 0};
 
+    transition: all ${theme._timings.Header.shrinkTransition} ease;
   `,
 );
 
 const StyledLogoContainer = styled.div(
-  ({ theme }) => `
-  background-color: ${theme.colors.white};
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`,
+  ({ theme }) => css`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: ${theme.colors.white};
+  `,
 );
 
 const StyledLogo = styled(Logo)<{ $isShrunk: boolean }>(
-  ({ theme, $isShrunk }) => `
-  height: ${$isShrunk ? `0` : theme._spacings.Header.logoHeight};
-  transition: height ${theme._timings.Header.shrinkTransition} ease;
+  ({ theme, $isShrunk }) => css`
+    height: ${$isShrunk ? `0` : theme._spacings.Header.logoHeight};
+    transition: height ${theme._timings.Header.shrinkTransition} ease;
 
-  > g {
-    fill: ${theme.colors.black};
-  }
-`,
+    > g {
+      fill: ${theme.colors.black};
+    }
+  `,
 );
 
 const StyledTitle = styled.div<{ $isShrunk: boolean }>(
-  ({ theme, $isShrunk }) => `
-  background-color: ${theme.colors.white};
-  padding: ${theme._spacings.Header.titlePadding};
-  box-shadow: 0px 24px 45px 12px ${theme.colors.white}66;
-  display: flex;
-  flex-direction: column;
+  ({ theme, $isShrunk }) => css`
+    display: flex;
+    flex-direction: column;
+    padding: ${theme._spacings.Header.titlePadding};
+    background-color: ${theme.colors.white};
 
-  & > h1 {
-    align-self: center;
-    width: min-content;
-    font-size: ${theme._spacings.Header.titleFontSize};
-    font-family: ${theme.fonts.heading};
-    font-weight: 400;
-    text-align: center;
-    transition: all ${theme._timings.Header.shrinkTransition} ease;
-    margin: 0;
-    line-height: ${theme._spacings.Header.titleFontSize};
-    letter-spacing: ${$isShrunk ? theme.spacings.l : theme.spacings.xxxs};
-    cursor: pointer;
+    &::after {
+      content: "";
 
-    &:hover {
-      color: ${theme._colors.Link.hoverColor};
-      transition: color ${theme._timings.Link.transitionSpeed} ease;
+      transform: translate(
+        -${theme._spacings.Header.titlePadding},
+        ${theme._spacings.Header.titlePadding}
+      );
+
+      display: block;
+
+      width: ${$isShrunk
+        ? `calc(2 * ${theme._spacings.Header.titlePadding} + 100%)`
+        : "0"};
+      height: ${theme.spacings.xxs};
+
+      background: ${theme.colors.black};
+      border-radius: 10rem;
+
+      transition: all ${theme._timings.Header.shrinkTransition} ease;
     }
-  }
 
+    & > h1 {
+      cursor: pointer;
 
-  &:after {
-    content: "";
-    display: block;
-    border-radius: 10rem;
-    height: ${theme.spacings.xxs};
-    width: ${$isShrunk ? `calc(2 * ${theme._spacings.Header.titlePadding} + 100%)` : "0"};
-    transition: all ${theme._timings.Header.shrinkTransition} ease;
-    transform: translate(-${theme._spacings.Header.titlePadding}, ${theme._spacings.Header.titlePadding});
-    background: ${theme.colors.black};};
-  }
+      align-self: center;
 
-`,
+      width: min-content;
+      margin: 0;
+
+      font-family: ${theme.fonts.heading};
+      font-size: ${theme._spacings.Header.titleFontSize};
+      font-weight: 400;
+      line-height: ${theme._spacings.Header.titleFontSize};
+      text-align: center;
+      letter-spacing: ${$isShrunk ? theme.spacings.l : theme.spacings.xxxs};
+
+      transition: all ${theme._timings.Header.shrinkTransition} ease;
+
+      &:hover {
+        color: ${theme._colors.Link.hoverColor};
+        transition: color ${theme._timings.Link.transitionSpeed} ease;
+      }
+    }
+  `,
 );
 
 // TYPES

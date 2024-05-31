@@ -1,4 +1,4 @@
-import { EventRow } from "../_db/db.d";
+import { EventRow } from "@/app/_db/db.d";
 
 /**
  * Convert an event table row to a URL.

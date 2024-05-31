@@ -1,4 +1,17 @@
 {
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "tabWidth": 2,
-  "useTabs": false
+  "useTabs": false,
+  "importOrder": [
+    "^providers/(.*)$",
+    "^templates/(.*)$",
+    "^organisms/(.*)$",
+    "^molecules/(.*)$",
+    "^atoms/(.*)$",
+    "^(lib|config)/(.*)$",
+    "^@/app/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

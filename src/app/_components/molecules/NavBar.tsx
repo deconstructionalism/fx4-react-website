@@ -2,41 +2,53 @@
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import navConfig from "@/app/_config/nav";
-import NavLink from "@/app/_components/atoms/NavLink";
-import styled from "styled-components";
-import { generateMediaQuery } from "@/app/_lib/themeHelpers";
+import styled, { css } from "styled-components";
+
+import NavLink from "atoms/NavLink";
+
+import navConfig from "config/nav";
+import { generateMediaQuery } from "lib/themeHelpers";
 
 // STYLES
 
 const StyledNav = styled.nav<{ $expanded: boolean }>(
-  ({ theme, $expanded }) => `
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: ${theme.spacings.xxl} ${theme.spacings.m};
-  padding-right: ${$expanded ? "20rem" : "0rem"};
-  bottom: 0;
-  top: 0;
-  left: 0;
-  max-width: ${$expanded ? "25rem" : `calc(${theme.spacings.xxxl} + 2 * ${theme.spacings.xs} + 2 * ${theme.spacings.m})`};
-  overflow-x: hidden;
-  background-color: ${theme.colors.black};
-  transition: max-width ${theme.timings.fast} ease, padding ${theme.timings.fast} ease;
-  z-index: 1000;
-  overflow-y: hidden;
+  ({ theme, $expanded }) => css`
+    position: fixed;
+    z-index: ${theme.zIndex.navigation};
+    top: 0;
+    bottom: 0;
+    left: 0;
 
-  ${generateMediaQuery("mobile")(`
-    top: unset;
-    right: 0;
-    max-width: unset;
-    flex-direction: row;
-    padding: ${theme.spacings.m};
-    justify-content: space-around;
-    transition: none;
-  `)}
- `,
+    overflow: hidden hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    max-width: ${$expanded
+      ? theme._spacings.Nav.expandedWidth
+      : `calc(${theme.spacings.xxxl} + 2 * ${theme.spacings.xs} + 2 * ${theme.spacings.m})`};
+    padding: ${theme.spacings.xxl} ${theme.spacings.m};
+    padding-right: ${$expanded ? "20rem" : "0rem"};
+
+    background-color: ${theme.colors.black};
+
+    transition:
+      max-width ${theme.timings.fast} ease,
+      padding ${theme.timings.fast} ease;
+
+    ${generateMediaQuery("mobile")(css`
+      top: unset;
+      right: 0;
+
+      flex-direction: row;
+      justify-content: space-around;
+
+      max-width: unset;
+      padding: ${theme.spacings.m};
+
+      transition: none;
+    `)}
+  `,
 );
 
 const NavBar = () => {

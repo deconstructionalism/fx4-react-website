@@ -1,12 +1,14 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import styled, { useTheme } from "styled-components";
-import sleep from "@/app/_lib/sleep";
-import { generateMediaQuery, timingToMs } from "@/app/_lib/themeHelpers";
-import Link from "./Link";
+import styled, { css, useTheme } from "styled-components";
+
+import Link from "atoms/Link";
+
+import sleep from "lib/sleep";
+import { generateMediaQuery, timingToMs } from "lib/themeHelpers";
 
 // CONSTANTS
 
@@ -26,48 +28,54 @@ export interface NavLinkProps {
 // STYLES
 
 const StyledLink = styled(Link)`
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
 `;
 
 const StyledLinkText = styled.span<{ $isHovering: boolean }>(
-  ({ $isHovering, theme }) => `
-  color: ${$isHovering ? theme.colors.white : theme.colors.gray};
-  text-transform: uppercase;
-  font-size: ${theme.spacings.l};
-  padding-left: 2rem;
-  transform: scale(${$isHovering ? HOVER_SCALING : 1});
-  transform-origin: left;
-  transition: transform ${theme.timings.extraFast} ease;
+  ({ $isHovering, theme }) => css`
+    transform-origin: left;
+    transform: scale(${$isHovering ? HOVER_SCALING : 1});
 
-  ${generateMediaQuery("mobile")(`
-    display: none;
-  `)}
-`,
+    padding-left: 2rem;
+
+    font-size: ${theme.spacings.l};
+    color: ${$isHovering ? theme.colors.white : theme.colors.gray};
+    text-transform: uppercase;
+
+    transition: transform ${theme.timings.extraFast} ease;
+
+    ${generateMediaQuery("mobile")(css`
+      display: none;
+    `)}
+  `,
 );
 
 const StyledIconContainer = styled.div<{ $isHovering: boolean }>(
-  ({ theme, $isHovering }) => `
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0 ${theme.spacings.xs};
-  padding: ${theme.spacings.xxxl} 0;
-  width: ${theme.spacings.xxxl};
-  transform: scale(${$isHovering ? HOVER_SCALING : 1});
-  transition: transform ${theme.timings.extraFast} ease;
+  ({ theme, $isHovering }) => css`
+    transform: scale(${$isHovering ? HOVER_SCALING : 1});
 
-  ${generateMediaQuery("mobile")(`
-    padding: 0;
-  `)}
-`,
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    width: ${theme.spacings.xxxl};
+    margin: 0 ${theme.spacings.xs};
+    padding: ${theme.spacings.xxxl} 0;
+
+    transition: transform ${theme.timings.extraFast} ease;
+
+    ${generateMediaQuery("mobile")(css`
+      padding: 0;
+    `)}
+  `,
 );
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)(
-  ({ theme }) => `
-  height: ${theme.spacings.xxxl};
-`,
+  ({ theme }) => css`
+    height: ${theme.spacings.xxxl};
+  `,
 );
 
 const NavLink = ({

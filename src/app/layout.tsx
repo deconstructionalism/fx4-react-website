@@ -1,13 +1,19 @@
-import "./_styles/globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import ThemeProvider from "./_components/providers/ThemeProvider";
-import metadataConfig from "./_config/metaData";
-import StyledComponentsRegistry from "./_components/providers/StyledComponentsRegistry";
-import BodyTemplateProvider from "./_components/providers/BodyTemplateProvider";
-import HTML from "./_components/organisms/HTML";
-import PostHogProvider from "./_components/providers/PostHogProvider";
-import PostHogPageView from "./_components/providers/PostHogProvider/PostHogPageView";
 import { Suspense } from "react";
+
+import BodyTemplateProvider from "providers/BodyTemplateProvider";
+import PostHogProvider from "providers/PostHogProvider";
+import PostHogPageView from "providers/PostHogProvider/PostHogPageView";
+import StyledComponentsRegistry from "providers/StyledComponentsRegistry";
+
+import HTML from "organisms/HTML";
+
+import FullScreenImageGallery from "atoms/FullScreenImageGallery";
+
+import metadataConfig from "config/metaData";
+
+import ThemeProvider from "@/app/_components/providers/ThemeProvider";
+import "@/app/_styles/globals.css";
 
 // METADATA
 
@@ -29,7 +35,10 @@ const RootLayout = ({ children }: RootLayoutProps) => {
             <Suspense>
               <PostHogPageView />
             </Suspense>
-            <BodyTemplateProvider>{children}</BodyTemplateProvider>
+            <BodyTemplateProvider>
+              {children}
+              <FullScreenImageGallery />
+            </BodyTemplateProvider>
           </HTML>
         </PostHogProvider>
       </ThemeProvider>

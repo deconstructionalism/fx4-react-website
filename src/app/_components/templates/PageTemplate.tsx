@@ -1,11 +1,12 @@
 "use client";
 
-import styled from "styled-components";
-import NavBar from "../molecules/NavBar";
-import Header from "../molecules/Header";
 import { useEffect, useState } from "react";
+import styled, { css } from "styled-components";
+
+import Footer from "@/app/_components/molecules/Footer";
+import Header from "@/app/_components/molecules/Header";
+import NavBar from "@/app/_components/molecules/NavBar";
 import { addThemeValues, generateMediaQuery } from "@/app/_lib/themeHelpers";
-import Footer from "../molecules/Footer";
 import useHasSubMenu from "@/app/_lib/useHasSubMenu";
 
 // TYPES
@@ -17,19 +18,22 @@ interface PageTemplateProps {
 // STYLES
 
 const StyledBody = styled.body(
-  ({ theme }) => `
-  margin-left: calc(${theme.spacings.xxxl} + 2 * ${theme.spacings.xs} + 2 * ${theme.spacings.m});
-  padding: ${theme.spacings.l} ${theme.spacings.xl};
-  background-color: ${theme.colors.white};
-  color: ${theme.colors.black};
+  ({ theme }) => css`
+    margin-left: calc(
+      ${theme.spacings.xxxl} + 2 * ${theme.spacings.xs} + 2 *
+        ${theme.spacings.m}
+    );
+    padding: ${theme.spacings.l} ${theme.spacings.xl};
+    color: ${theme.colors.black};
+    background-color: ${theme.colors.white};
 
-  ${generateMediaQuery(
-    "mobile",
-    "max-width",
-  )(`
-    margin-left: 0;
-  `)}
-`,
+    ${generateMediaQuery(
+      "mobile",
+      "max-width",
+    )(css`
+      margin-left: 0;
+    `)}
+  `,
 );
 
 const StyledMain = styled.main<{ $isShrunk: boolean; $hasSubMenu: boolean }>(
@@ -59,7 +63,7 @@ const StyledMain = styled.main<{ $isShrunk: boolean; $hasSubMenu: boolean }>(
   max-width: ${theme._spacings.PageTemplate.maxWidth};
   margin-left: auto;
   margin-right: auto;
-  transition: margin-top 1s ease;
+  transition: margin-top ${theme._timings.Header.shrinkTransition} ease;
 `,
 );
 

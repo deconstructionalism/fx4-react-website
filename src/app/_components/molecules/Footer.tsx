@@ -1,46 +1,60 @@
 "use client";
 
-import { timingToMs } from "@/app/_lib/themeHelpers";
-import { useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import Emblem from "../atoms/Emblem";
-import sleep from "@/app/_lib/sleep";
-import styled, { useTheme } from "styled-components";
+import { useCallback, useEffect, useState } from "react";
+import styled, { css, useTheme } from "styled-components";
+
+import Emblem from "atoms/Emblem";
+
+import sleep from "lib/sleep";
+import { timingToMs } from "lib/themeHelpers";
 
 // STYLES
 
 const StyledFooter = styled.footer(
-  ({ theme }) => `
-  height: ${theme._spacings.Footer.height};
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: ${theme._spacings.Footer.paddingTop};
-  align-items: start;
-`,
+  ({ theme }) => css`
+    display: flex;
+    align-items: start;
+    justify-content: center;
+
+    width: 100%;
+    height: ${theme._spacings.Footer.height};
+    padding-top: ${theme._spacings.Footer.paddingTop};
+  `,
 );
 
 const StyledEmblem = styled(Emblem)<{
   $isScrolling: boolean;
   $isSpinning: boolean;
 }>(
-  ({ theme, $isScrolling, $isSpinning }) => `
-  height: ${theme._spacings.Footer.emblemHeight};
-  cursor: pointer;
-  pointer-events: ${$isScrolling ? "auto" : "none"};
-  transform-origin: center;
+  ({ theme, $isScrolling, $isSpinning }) => css`
+    pointer-events: ${$isScrolling ? "auto" : "none"};
+    cursor: pointer;
+    transform-origin: center;
+    height: ${theme._spacings.Footer.emblemHeight};
 
-  > path {
-    transition: all ${theme.timings.fast} ease;
-    fill: ${theme.colors.lightGray};
-  }
+    > path {
+      fill: ${theme.colors.lightGray};
+      transition: all ${theme.timings.fast} ease;
+    }
 
-  &:hover > path {
-    fill: ${theme.colors.black};
-  }
+    &:hover > path {
+      fill: ${theme.colors.black};
+    }
 
-  ${$isSpinning && `animation: spin360 ${theme.timings.medium} ease-in-out 1;`}
-`,
+    ${$isSpinning &&
+    `animation: spin-360 ${theme.timings.medium} ease-in-out 1;`}
+
+    @keyframes spin-360 {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  `,
 );
 
 const Footer = () => {
