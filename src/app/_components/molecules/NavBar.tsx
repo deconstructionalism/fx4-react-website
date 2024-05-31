@@ -25,7 +25,7 @@ const StyledNav = styled.nav<{ $expanded: boolean }>(
     align-items: flex-start;
 
     max-width: ${$expanded
-      ? "25rem"
+      ? theme._spacings.Nav.expandedWidth
       : `calc(${theme.spacings.xxxl} + 2 * ${theme.spacings.xs} + 2 * ${theme.spacings.m})`};
     padding: ${theme.spacings.xxl} ${theme.spacings.m};
     padding-right: ${$expanded ? "20rem" : "0rem"};

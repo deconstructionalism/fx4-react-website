@@ -115,6 +115,9 @@ const CUSTOM_SPACING_PALETTE = {
     gap: SPACING_PALETTE.s,
     paddingTop: SPACING_PALETTE.s,
   },
+  Nav: {
+    expandedWidth: "25rem",
+  },
   SubNavLink: {
     height: "4rem",
   },
