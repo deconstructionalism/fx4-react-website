@@ -17,7 +17,7 @@ import useImagePreview from "lib/useImagePreview";
 const StyledImageGallery = styled.div<{ $isOpen: boolean; $isHidden: boolean }>(
   ({ theme, $isOpen, $isHidden }) => css`
     position: fixed;
-    z-index: 2000;
+    z-index: ${theme.zIndex.modal};
     top: 0;
     left: 0;
 
@@ -59,7 +59,7 @@ const StyledCloseIcon = styled(FontAwesomeIcon)<{ $isOpen: boolean }>(
     cursor: pointer;
 
     position: relative;
-    z-index: 2001;
+    z-index: ${theme.zIndex.modalControl};
 
     float: right;
 
@@ -107,7 +107,7 @@ const StyledNavButton = styled(FontAwesomeIcon)<{
     cursor: pointer;
 
     position: absolute;
-    z-index: 2001;
+    z-index: ${theme.zIndex.modalControl};
     top: 50%;
 
     padding: ${theme.spacings.m};

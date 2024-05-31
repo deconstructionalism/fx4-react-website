@@ -41,11 +41,11 @@ const NAV_CONFIG: NavItemConfig[] = [
     href: "/about",
     icon: faCircleQuestion,
   },
-  // {
-  //   title: "DIY",
-  //   href: "/diy",
-  //   icon: faScrewdriverWrench,
-  // },
+  {
+    title: "DIY",
+    href: "/diy",
+    icon: faScrewdriverWrench,
+  },
   {
     title: "Contact",
     href: "mailto:info@fuckthefourth.com",

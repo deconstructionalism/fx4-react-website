@@ -63,7 +63,7 @@ const StyledMain = styled.main<{ $isShrunk: boolean; $hasSubMenu: boolean }>(
   max-width: ${theme._spacings.PageTemplate.maxWidth};
   margin-left: auto;
   margin-right: auto;
-  transition: margin-top 1s ease;
+  transition: margin-top ${theme._timings.Header.shrinkTransition} ease;
 `,
 );
 

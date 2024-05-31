@@ -6,6 +6,7 @@ import styled, { css } from "styled-components";
 
 const P = styled.p(
   ({ theme }) => css`
+    padding-top: ${theme.spacings.l};
     font-family: ${theme.fonts.body};
     font-size: ${theme.spacings.l};
     text-align: justify;

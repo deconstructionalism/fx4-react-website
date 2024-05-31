@@ -14,7 +14,7 @@ import { generateMediaQuery } from "lib/themeHelpers";
 const StyledNav = styled.nav<{ $expanded: boolean }>(
   ({ theme, $expanded }) => css`
     position: fixed;
-    z-index: 1000;
+    z-index: ${theme.zIndex.navigation};
     top: 0;
     bottom: 0;
     left: 0;
