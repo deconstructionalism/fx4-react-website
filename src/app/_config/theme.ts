@@ -66,7 +66,8 @@ const FONT_PALETTE = {
 } as const satisfies Record<string, FontFamily>;
 
 const Z_INDEX_PALETTE = {
-  navigation: 100,
+  header: 100,
+  navigation: 101,
   modal: 200,
   modalControl: 201,
 } as const satisfies Record<string, number>;

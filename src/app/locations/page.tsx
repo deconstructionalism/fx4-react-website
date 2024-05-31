@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import styled, { css } from "styled-components";
 
 import LocationBanner from "atoms/LocationBanner";
 
-import loadImagesAsync from "lib/loadImagesAsync";
 import { generateMediaQuery } from "lib/themeHelpers";
 
 import cursor from "@/app/_db/cursor";
