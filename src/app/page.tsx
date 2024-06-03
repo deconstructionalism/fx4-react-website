@@ -181,7 +181,7 @@ const RootPage = () => {
 
   return (
     <StyledSection>
-      <StyledVideo ref={videoRef} disablePictureInPicture>
+      <StyledVideo ref={videoRef} disablePictureInPicture playsInline>
         <source src="/video/landing_video.mp4" type="video/mp4" />
       </StyledVideo>
 
