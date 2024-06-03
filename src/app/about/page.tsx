@@ -10,6 +10,7 @@ const About = () => {
         src="/images/poly-segmented.jpg"
         alt="Poly Styrene collage by Dave Fischer"
         title="Poly Styrene collage by Dave Fischer"
+        includeTitle
       />
       <P>
         Poly Styrene was born on July 3rd 1957, and grew up to head the

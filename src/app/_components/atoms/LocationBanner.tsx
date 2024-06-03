@@ -131,7 +131,9 @@ const LocationBanner = ({ eventData }: LocationBannerProps) => {
 
   // EVENT HANDLERS
 
-  const handleClick = () => router.push(eventToURL(eventData));
+  const handleClick = () => {
+    router.push(eventToURL(eventData));
+  };
 
   const handleMouseEnter = () => setIsHovering(true);
 

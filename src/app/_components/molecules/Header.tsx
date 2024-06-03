@@ -16,6 +16,7 @@ import useHasSubMenu from "lib/useHasSubMenu";
 const StyledHeader = styled.header<{ $hasSubMenu: boolean }>(
   ({ theme, $hasSubMenu }) => css`
     position: sticky;
+    z-index: ${theme.zIndex.header};
     top: 0;
 
     display: flex;

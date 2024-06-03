@@ -1,5 +1,3 @@
-// TYPES
-
 interface LogoProps {
   className?: string;
 }

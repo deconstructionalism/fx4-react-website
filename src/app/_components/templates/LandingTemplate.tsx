@@ -13,6 +13,7 @@ interface LandingTemplateProps {
 const StyledBody = styled.body(
   ({ theme }) => `
   background-color: ${theme.colors.black};
+  overflow: hidden;
 `,
 );
 
