@@ -126,7 +126,7 @@ const CUSTOM_SPACING_PALETTE = {
     titleLineHeight: "12rem",
   },
   LandingPage: {
-    mobileAttributionSkipHeight: "10rem",
+    mobileAttributionSkipHeight: "13rem",
   },
 } as const satisfies ComponentPalettes<SpacingPalette>;
 
