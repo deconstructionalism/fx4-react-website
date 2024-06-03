@@ -116,6 +116,7 @@ const StyledAttribution = styled(P)(
 
     ${generateMediaQuery("mobile")(css`
       margin-bottom: ${theme._spacings.LandingPage.mobileAttributionSkipHeight};
+      font-size: ${theme.spacings.l};
     `)}
   `,
 );
@@ -139,6 +140,7 @@ const StyledSkip = styled(P)(
 
     ${generateMediaQuery("mobile")(css`
       margin-bottom: ${theme._spacings.LandingPage.mobileAttributionSkipHeight};
+      font-size: ${theme.spacings.l};
     `)}
   `,
 );
@@ -191,7 +193,12 @@ const RootPage = () => {
 
   return (
     <StyledSection>
-      <StyledVideo ref={videoRef} disablePictureInPicture playsInline>
+      <StyledVideo
+        ref={videoRef}
+        disablePictureInPicture
+        playsInline
+        poster="/images/black-square.jpg"
+      >
         <source src="/video/landing_video.mp4" type="video/mp4" />
       </StyledVideo>
 
