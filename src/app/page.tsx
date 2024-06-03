@@ -8,6 +8,7 @@ import Emblem from "atoms/Emblem";
 import P from "atoms/P";
 
 import sleep from "lib/sleep";
+import { generateMediaQuery } from "lib/themeHelpers";
 
 // STYLES
 
@@ -112,6 +113,10 @@ const StyledAttribution = styled(P)(
     text-transform: uppercase;
 
     background-color: ${theme.colors.black};
+
+    ${generateMediaQuery("mobile")(css`
+      margin-bottom: ${theme._spacings.LandingPage.mobileAttributionSkipHeight};
+    `)}
   `,
 );
 
@@ -131,6 +136,10 @@ const StyledSkip = styled(P)(
     text-transform: uppercase;
 
     background-color: ${theme.colors.black};
+
+    ${generateMediaQuery("mobile")(css`
+      margin-bottom: ${theme._spacings.LandingPage.mobileAttributionSkipHeight};
+    `)}
   `,
 );
 
@@ -147,6 +156,7 @@ const RootPage = () => {
   useEffect(() => {
     const videoElement = videoRef.current;
     const emblemElement = emblemRef.current;
+
     videoElement?.addEventListener("ended", handleVideoEnded);
     emblemElement?.addEventListener("animationend", handleAnimationEnd);
     return () => {

@@ -125,6 +125,9 @@ const CUSTOM_SPACING_PALETTE = {
   LocationBanner: {
     titleLineHeight: "12rem",
   },
+  LandingPage: {
+    mobileAttributionSkipHeight: "10rem",
+  },
 } as const satisfies ComponentPalettes<SpacingPalette>;
 
 const CUSTOM_Z_INDEX_PALETTE =
