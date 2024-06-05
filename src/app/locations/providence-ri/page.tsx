@@ -74,7 +74,7 @@ const ProvidenceRI = () => {
     },
     {
       src: "/images/posters/providence-6-14-benefit.jpg",
-      title: "flyer by @__lex__talionis__ on Instagram",
+      title: "flyer by @timetravelfuckmissile on Instagram",
     },
   ];
 
