@@ -141,7 +141,7 @@ const eventsTable: EventRow[] = [
         externalLink: true,
       },
       merchandiseLink: {
-        href: "https://fx4fest.bigcartel.com",
+        href: "https://fx4fest.square.site",
         title: "Get official drip!",
         externalLink: true,
       },
