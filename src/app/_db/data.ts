@@ -89,9 +89,11 @@ const eventsTable: EventRow[] = [
         },
       },
       {
-        name: "Compactor",
+        name: "Whitey Alabastard",
         socialMediaLinks: {
-          bandcamp: { href: "https://compactor.bandcamp.com/" },
+          bandcamp: {
+            href: "https://figurerecords.bandcamp.com/album/perdition",
+          },
         },
       },
       {
@@ -270,7 +272,11 @@ const eventsTable: EventRow[] = [
       src: "/images/location-banners/nyc.jpg",
       title: "Photo of c?c? by ??.",
     },
-    socialMediaLinks: {},
+    socialMediaLinks: {
+      instagram: {
+        href: "https://www.instagram.com/fuckthefourthfest.nyc",
+      },
+    },
     eventLinks: {},
     lineup: [
       {
