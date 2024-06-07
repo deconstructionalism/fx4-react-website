@@ -278,6 +278,10 @@ const eventsTable: EventRow[] = [
       },
     },
     eventLinks: {},
+    eventPoster: {
+      src: "/images/posters/brooklyn.jpg",
+      title: "by @unsanctuary on Instagram.",
+    },
     lineup: [
       {
         name: "Pharmakon",
