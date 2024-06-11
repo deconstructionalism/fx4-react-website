@@ -86,6 +86,27 @@ const StyledLinkIcon = styled(FontAwesomeIcon)(
     &:hover {
       color: ${theme._colors.Link.hoverColor};
     }
+
+    &.ticket-link {
+      animation: pulse ${theme._timings.Link.transitionSpeed} infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        color: ${theme.colors.black};
+      }
+
+      50% {
+        transform: scale(1.1);
+        color: ${theme.colors.primary};
+      }
+
+      100% {
+        transform: scale(1);
+        color: ${theme.colors.black};
+      }
+    }
   `,
 );
 
@@ -119,7 +140,10 @@ const EventLinkBar = ({ data }: EventLinkBarProps) => {
         title={linkData.title}
         onClick={() => handleClick(linkData.href)}
       >
-        <StyledLinkIcon icon={icon} />
+        <StyledLinkIcon
+          className={icon === EVENT_LINK_ICONS.ticketLink ? "ticket-link" : ""}
+          icon={icon}
+        />
       </div>
     );
     return [...acc, Link];

@@ -8,6 +8,7 @@ import P from "atoms/P";
 
 import { generateMediaQuery } from "lib/themeHelpers";
 
+import Divider from "@/app/_components/atoms/Divider";
 import { ImageData } from "@/app/_db/db";
 import useImagePreview from "@/app/_lib/useImagePreview";
 
@@ -16,7 +17,7 @@ import useImagePreview from "@/app/_lib/useImagePreview";
 const StyledButton = styled(Button)`
   width: 90%;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 `;
 
 const StyledFlyerContainer = styled.div`
@@ -83,6 +84,13 @@ const ProvidenceRI = () => {
   const handleDonationClick = () =>
     window.open("https://gofund.me/2725d7e0", "_blank");
 
+  const handleTicketClick = () => {
+    window.open(
+      "https://www.zeffy.com/en-US/ticketing/2a39a78f-08a8-4cc6-b559-4ac93a61e5c6",
+      "_blank",
+    );
+  };
+
   const handleImageClick = (index: number) => {
     openGallery(benefitImages, index);
   };
@@ -104,6 +112,9 @@ const ProvidenceRI = () => {
 
   return (
     <section>
+      <StyledButton onClick={handleTicketClick}>Buy Tickets</StyledButton>
+      <StyledButton onClick={handleDonationClick}>Donate</StyledButton>
+      <Divider />
       <P>
         We are trying to run this years fest as a <b>benefit for Gaza</b>, and
         we are trying to <b>keep our ticket prices low</b>.
@@ -113,7 +124,6 @@ const ProvidenceRI = () => {
         costs of the fest, or{" "}
         <b>if you want to donate directly, you can use the button below</b>.
       </P>
-      <StyledButton onClick={handleDonationClick}>Donate</StyledButton>
       <StyledFlyerContainer>{BenefitFlyers}</StyledFlyerContainer>
     </section>
   );
