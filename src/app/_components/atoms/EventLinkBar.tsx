@@ -88,7 +88,7 @@ const StyledLinkIcon = styled(FontAwesomeIcon)(
     }
 
     &.ticket-link {
-      animation: pulse ${theme._timings.Link.transitionSpeed} infinite;
+      animation: pulse ${theme.timings.fast} infinite;
     }
 
     @keyframes pulse {
