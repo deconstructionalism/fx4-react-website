@@ -4,6 +4,7 @@ import {
   faFacebook,
   faInstagram,
   faTwitter,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faGlobe,
@@ -23,6 +24,7 @@ import { EventRow } from "@/app/_db/db";
 const SOCIAL_MEDIA_ICONS = {
   instagram: faInstagram,
   facebook: faFacebook,
+  youtube: faYoutube,
   twitter: faTwitter,
   bandcamp: faBandcamp,
 } satisfies Record<keyof EventRow["socialMediaLinks"], IconDefinition>;
@@ -37,6 +39,7 @@ const EVENT_LINK_ICONS = {
 const SOCIAL_MEDIA_ORDER = [
   "instagram",
   "facebook",
+  "youtube",
   "twitter",
   "bandcamp",
 ] satisfies (keyof EventRow["socialMediaLinks"])[];

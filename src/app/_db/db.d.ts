@@ -20,6 +20,7 @@ export interface SocialMediaLinkData {
   facebook?: LinkData;
   twitter?: LinkData;
   bandcamp?: LinkData;
+  youtube?: LinkData;
 }
 
 export interface LocationData {

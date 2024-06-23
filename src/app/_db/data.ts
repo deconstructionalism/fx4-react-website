@@ -133,6 +133,10 @@ const eventsTable: EventRow[] = [
         href: "https://www.instagram.com/fuckthefourthfest.pvd/",
         title: "Instagram",
       },
+      youtube: {
+        href: "https://www.youtube.com/channel/UCQhMvFpra8NIA6fh5O6R7lA",
+        title: "Youtube",
+      },
     },
     eventLinks: {
       ticketLink: {
