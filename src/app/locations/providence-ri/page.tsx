@@ -9,10 +9,48 @@ import P from "atoms/P";
 import { generateMediaQuery } from "lib/themeHelpers";
 
 import Divider from "@/app/_components/atoms/Divider";
-import { ImageData } from "@/app/_db/db";
+import EventLineupBand from "@/app/_components/atoms/EventLineupBand";
+import { BandData, ImageData } from "@/app/_db/db";
 import useImagePreview from "@/app/_lib/useImagePreview";
 
+// CONSTANTS
+
+const DESKTOP_IMAGE_PERCENTAGE: number = 75;
+
 // STYLES
+
+const StyledPosterImage = styled(Image)`
+  width: ${DESKTOP_IMAGE_PERCENTAGE}%;
+  height: auto;
+  margin: 0 auto;
+
+  ${generateMediaQuery("tablet")(css`
+    width: 100%;
+  `)}
+`;
+
+const StyledTitle = styled.h1(
+  ({ theme }) => css`
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.spacings.l};
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+  `,
+);
+
+const StyledLineup = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+
+  & > * {
+    width: 33.3333%;
+
+    ${generateMediaQuery("tablet")(css`
+      width: 50%;
+    `)}
+  }
+`;
 
 const StyledButton = styled(Button)`
   width: 90%;
@@ -64,6 +102,27 @@ const ProvidenceRI = () => {
 
   // DATA
 
+  const aftersLineup: BandData[] = [
+    {
+      name: "Sodomahigomorra",
+      socialMediaLinks: {
+        instagram: { href: "https://www.instagram.com/sodomahigomorra" },
+      },
+    },
+    {
+      name: "Skullfucker",
+      socialMediaLinks: {
+        instagram: { href: "https://www.instagram.com/sssspikeeee" },
+      },
+    },
+    {
+      name: "Slepting",
+      socialMediaLinks: {
+        bandcamp: { href: "https://slepting.bandcamp.com/track/cenote" },
+      },
+    },
+  ];
+
   const benefitImages: ImageData[] = [
     {
       src: "/images/posters/providence-5-31-benefit.png",
@@ -97,6 +156,12 @@ const ProvidenceRI = () => {
 
   // LOGIC
 
+  const Bands = aftersLineup
+    .sort((a, b) => a.name.length - b.name.length)
+    .map((bandData, index) => {
+      return <EventLineupBand key={index} bandData={bandData} />;
+    });
+
   const BenefitFlyers = benefitImages.map((image, index) => (
     <StyledImage
       key={index}
@@ -112,9 +177,25 @@ const ProvidenceRI = () => {
 
   return (
     <section>
+      <StyledImage
+        src={"/images/posters/providence-afters.png"}
+        alt={"by Simulacrean"}
+        title={"by Simulacrean"}
+        includeTitle
+      />
+
+      <Divider />
+
+      <StyledTitle>Official afters at Black Lace featuring</StyledTitle>
+      <StyledLineup>{Bands}</StyledLineup>
+
+      <Divider />
+
       <StyledButton onClick={handleTicketClick}>Buy Tickets</StyledButton>
       <StyledButton onClick={handleDonationClick}>Donate</StyledButton>
+
       <Divider />
+
       <P>
         We are trying to run this years fest as a <b>benefit for Gaza</b>, and
         we are trying to <b>keep our ticket prices low</b>.
