@@ -51,7 +51,7 @@ const BrooklynNY = () => {
     {
       name: "VS",
       socialMediaLinks: {
-        instagram: { href: "https://www.instagram.com/chaoswarp/s" },
+        instagram: { href: "https://www.instagram.com/chaoswarp" },
       },
     },
   ];
