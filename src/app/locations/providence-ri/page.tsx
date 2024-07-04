@@ -44,11 +44,7 @@ const StyledLineup = styled.div`
   flex-flow: row wrap;
 
   & > * {
-    width: 33.3333%;
-
-    ${generateMediaQuery("tablet")(css`
-      width: 50%;
-    `)}
+    width: 50%;
   }
 `;
 
@@ -121,6 +117,12 @@ const ProvidenceRI = () => {
         bandcamp: { href: "https://slepting.bandcamp.com/track/cenote" },
       },
     },
+    {
+      name: "Feardotcom",
+      socialMediaLinks: {
+        bandcamp: { href: "https://feardotc0m.bandcamp.com/" },
+      },
+    },
   ];
 
   const benefitImages: ImageData[] = [
@@ -146,6 +148,13 @@ const ProvidenceRI = () => {
   const handleTicketClick = () => {
     window.open(
       "https://www.zeffy.com/en-US/ticketing/2a39a78f-08a8-4cc6-b559-4ac93a61e5c6",
+      "_blank",
+    );
+  };
+
+  const handelRSVPClick = () => {
+    window.open(
+      "https://docs.google.com/forms/d/e/1FAIpQLSe0EHS7qg_DcMCKOCAYs2PjtvhcJvGIVFBK2I2dIwiDAFG-1w/viewform",
       "_blank",
     );
   };
@@ -177,7 +186,12 @@ const ProvidenceRI = () => {
 
   return (
     <section>
-      <StyledImage
+      <StyledTitle>Official afters at Black Lace featuring</StyledTitle>
+      <StyledLineup>{Bands}</StyledLineup>
+
+      <Divider />
+
+      <StyledPosterImage
         src={"/images/posters/providence-afters.png"}
         alt={"by Simulacrean"}
         title={"by Simulacrean"}
@@ -186,12 +200,8 @@ const ProvidenceRI = () => {
 
       <Divider />
 
-      <StyledTitle>Official afters at Black Lace featuring</StyledTitle>
-      <StyledLineup>{Bands}</StyledLineup>
-
-      <Divider />
-
       <StyledButton onClick={handleTicketClick}>Buy Tickets</StyledButton>
+      <StyledButton onClick={handelRSVPClick}>RSVP For Afters</StyledButton>
       <StyledButton onClick={handleDonationClick}>Donate</StyledButton>
 
       <Divider />
