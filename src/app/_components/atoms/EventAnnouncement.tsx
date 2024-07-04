@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
-import { EventRow } from "@/app/_db/db";
-
 import Divider from "atoms/Divider";
+
+import { EventRow } from "@/app/_db/db";
 
 // STYLES
 

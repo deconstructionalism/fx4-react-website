@@ -3,11 +3,28 @@
 import styled from "styled-components";
 import { css } from "styled-components";
 
-import EventLineupBand from "@/app/_components/atoms/EventLineupBand";
+import Divider from "atoms/Divider";
+import EventLineupBand from "atoms/EventLineupBand";
+import Image from "atoms/Image";
+
 import { BandData } from "@/app/_db/db";
 import { generateMediaQuery } from "@/app/_lib/themeHelpers";
 
+// CONSTANTS
+
+const DESKTOP_IMAGE_PERCENTAGE: number = 75;
+
 // STYLES
+
+const StyledPosterImage = styled(Image)`
+  width: ${DESKTOP_IMAGE_PERCENTAGE}%;
+  height: auto;
+  margin: 0 auto;
+
+  ${generateMediaQuery("tablet")(css`
+    width: 100%;
+  `)}
+`;
 
 const StyledTitle = styled.h1(
   ({ theme }) => css`
@@ -71,6 +88,15 @@ const BrooklynNY = () => {
       <StyledTitle>Official afters at Bootleg Bar featuring</StyledTitle>
 
       <StyledLineup>{Bands}</StyledLineup>
+
+      <Divider />
+
+      <StyledPosterImage
+        src={"/images/posters/brooklyn-afters.jpg"}
+        alt={"by @deathbysheep on Instagram"}
+        title={"by @deathbysheep on Instagram"}
+        includeTitle
+      />
     </section>
   );
 };

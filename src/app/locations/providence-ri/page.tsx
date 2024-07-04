@@ -3,13 +3,13 @@
 import styled, { css } from "styled-components";
 
 import Button from "atoms/Button";
+import Divider from "atoms/Divider";
+import EventLineupBand from "atoms/EventLineupBand";
 import Image from "atoms/Image";
 import P from "atoms/P";
 
 import { generateMediaQuery } from "lib/themeHelpers";
 
-import Divider from "@/app/_components/atoms/Divider";
-import EventLineupBand from "@/app/_components/atoms/EventLineupBand";
 import { BandData, ImageData } from "@/app/_db/db";
 import useImagePreview from "@/app/_lib/useImagePreview";
 

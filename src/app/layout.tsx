@@ -5,6 +5,7 @@ import BodyTemplateProvider from "providers/BodyTemplateProvider";
 import PostHogProvider from "providers/PostHogProvider";
 import PostHogPageView from "providers/PostHogProvider/PostHogPageView";
 import StyledComponentsRegistry from "providers/StyledComponentsRegistry";
+import ThemeProvider from "providers/ThemeProvider";
 
 import HTML from "organisms/HTML";
 
@@ -12,7 +13,6 @@ import FullScreenImageGallery from "atoms/FullScreenImageGallery";
 
 import metadataConfig from "config/metaData";
 
-import ThemeProvider from "@/app/_components/providers/ThemeProvider";
 import "@/app/_styles/globals.css";
 
 // METADATA
