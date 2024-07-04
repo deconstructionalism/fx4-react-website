@@ -122,6 +122,8 @@ const eventsTable: EventRow[] = [
       state: "RI",
       name: "AS220",
     },
+    announcement:
+      "We've had a few lineup changes: lal, Foco, and Airbag dropped and we have added Tokarev (PVD) and Trace Amount (NYC).",
     date: new Date(2024, 6, 5),
     narrowBannerImage: {
       src: "/images/location-banners/pvd.jpg",
@@ -172,10 +174,10 @@ const eventsTable: EventRow[] = [
         },
       },
       {
-        name: "Foco",
+        name: "Tokarev",
         socialMediaLinks: {
-          bandcamp: {
-            href: "https://focoizm.bandcamp.com/",
+          instagram: {
+            href: "https://www.instagram.com/our.providence/reel/C8UlXvosbjk",
           },
         },
       },
@@ -249,13 +251,10 @@ const eventsTable: EventRow[] = [
         },
       },
       {
-        name: "lal",
+        name: "Trace Amount",
         socialMediaLinks: {
-          bandcamp: { href: "https://lalnyc.bandcamp.com/" },
+          bandcamp: { href: "https://traceamountnyc.bandcamp.com" },
         },
-      },
-      {
-        name: "Air Bag",
       },
     ],
     eventPoster: {

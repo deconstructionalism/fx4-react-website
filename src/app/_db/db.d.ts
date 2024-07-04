@@ -58,4 +58,5 @@ export interface EventRow extends TableRow {
   ticketCost?: string;
   lineup: BandData[];
   eventPoster?: ImageData;
+  announcement?: string;
 }

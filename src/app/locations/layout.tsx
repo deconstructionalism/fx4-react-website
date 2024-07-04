@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 
 import EventLineupTable from "molecules/EventLineupTable";
 
+import EventAnnouncement from "atoms/EventAnnouncement";
 import EventLinkBar from "atoms/EventLinkBar";
 import EventMainInfo from "atoms/EventMainInfo";
 import EventPoster from "atoms/EventPoster";
@@ -42,6 +43,7 @@ const LocationPageLayout = ({ children }: LocationPageLayoutProps) => {
       <EventMainInfo data={eventData} />
       <EventLinkBar data={eventData} />
       <EventPoster data={eventData} />
+      <EventAnnouncement data={eventData} />
       <EventLineupTable data={eventData} />
       {children}
     </section>
