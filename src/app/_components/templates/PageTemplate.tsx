@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 
-import Footer from "@/app/_components/molecules/Footer";
-import Header from "@/app/_components/molecules/Header";
-import NavBar from "@/app/_components/molecules/NavBar";
+import Footer from "molecules/Footer";
+import Header from "molecules/Header";
+import NavBar from "molecules/NavBar";
+
 import { addThemeValues, generateMediaQuery } from "@/app/_lib/themeHelpers";
 import useHasSubMenu from "@/app/_lib/useHasSubMenu";
 
