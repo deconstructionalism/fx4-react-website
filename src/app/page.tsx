@@ -8,7 +8,7 @@ import Emblem from "atoms/Emblem";
 import P from "atoms/P";
 
 import { MAIN_ROUTE } from "config/nav";
-import SessionStorage from "lib/sessionStorage";
+import wSS from "lib/sessionStorage";
 import sleep from "lib/sleep";
 import { generateMediaQuery } from "lib/themeHelpers";
 
@@ -154,7 +154,6 @@ const RootPage = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const emblemRef = useRef<SVGSVGElement>(null);
   const router = useRouter();
-  const storage = useMemo(() => new SessionStorage(), []);
 
   // EFFECT HOOKS
 
@@ -170,10 +169,10 @@ const RootPage = () => {
     };
   });
 
-  useMemo(() => {
-    const hasSkippedIntro = storage.get("hasSkippedIntro");
+  useEffect(() => {
+    const hasSkippedIntro = wSS(window.sessionStorage).get("hasSkippedIntro");
     hasSkippedIntro && redirect(MAIN_ROUTE);
-  }, [storage]);
+  }, []);
 
   // EVENT HANDLERS
 
@@ -194,7 +193,7 @@ const RootPage = () => {
   };
 
   const handleSkipClick = () => {
-    storage.set("hasSkippedIntro", true);
+    wSS(sessionStorage).set("hasSkippedIntro", true);
     router.push(MAIN_ROUTE);
   };
 

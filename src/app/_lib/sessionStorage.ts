@@ -5,48 +5,46 @@ interface SessionStorageState {
 }
 
 /**
- * Type-safe accessor for browser session storage.
+ * Wrap the browser session storage in a type-safe accessor.
+ * @param storage - The browser session storage object.
+ * @returns - A type-safe accessor for browser session storage.
  */
-class SessionStorage {
-  private readonly storage: Storage;
+const withTypedSessionStorage = (storage: Storage) => {
+  return {
+    /**
+     * Get a value from session storage.
+     * @param key - The key of the value to get.
+     * @returns - The type-cast value, or null if it does not exist.
+     */
+    get<K extends keyof SessionStorageState>(
+      key: K,
+    ): SessionStorageState[K] | null {
+      const value = storage.getItem(key);
 
-  constructor() {
-    this.storage = window.sessionStorage;
-  }
+      if (
+        value === null ||
+        value === undefined ||
+        value === "undefined" ||
+        value === "null"
+      ) {
+        return null;
+      }
 
-  /**
-   * Get a value from session storage.
-   * @param key - The key of the value to get.
-   * @returns - The type-cast value, or null if it does not exist.
-   */
-  get<K extends keyof SessionStorageState>(
-    key: K,
-  ): SessionStorageState[K] | null {
-    const value = this.storage.getItem(key);
+      return JSON.parse(value);
+    },
 
-    if (
-      value === null ||
-      value === undefined ||
-      value === "undefined" ||
-      value === "null"
-    ) {
-      return null;
-    }
+    /**
+     * Set a value in session storage.
+     * @param key - The key of the value to set.
+     * @param value - The value to set.
+     */
+    set<K extends keyof SessionStorageState>(
+      key: K,
+      value: SessionStorageState[K],
+    ): void {
+      storage.setItem(key, JSON.stringify(value));
+    },
+  };
+};
 
-    return JSON.parse(value);
-  }
-
-  /**
-   * Set a value in session storage.
-   * @param key - The key of the value to set.
-   * @param value - The value to set.
-   */
-  set<K extends keyof SessionStorageState>(
-    key: K,
-    value: SessionStorageState[K],
-  ): void {
-    this.storage.setItem(key, JSON.stringify(value));
-  }
-}
-
-export default SessionStorage;
+export default withTypedSessionStorage;

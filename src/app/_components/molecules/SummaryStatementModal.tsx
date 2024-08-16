@@ -7,7 +7,8 @@ import ModalContent from "atoms/ModalContent";
 import ModalTitle from "atoms/ModalTitle";
 import P from "atoms/P";
 
-import SessionStorage from "@/app/_lib/sessionStorage";
+import wSS from "lib/sessionStorage";
+
 import useModal from "@/app/_lib/useModal";
 
 // STYLES
@@ -58,12 +59,11 @@ const SummaryStatementModal = () => {
   // STATE
 
   const closeModal = useModal((state) => state.closeModal);
-  const storage = new SessionStorage();
 
   // EVENT HANDLERS
 
   const handleHanbalaClick = () => {
-    storage.set("hasReadSummary", true);
+    wSS(sessionStorage).set("hasReadSummary", true);
     closeModal();
   };
 
