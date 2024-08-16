@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // TYPES
 
-interface LandingTemplateProps {
+interface FullPageTemplateProps {
   children: React.ReactNode;
 }
 
@@ -17,10 +17,10 @@ const StyledBody = styled.body(
 `,
 );
 
-const LandingTemplate = ({ children }: LandingTemplateProps) => {
+const FullPageTemplate = ({ children }: FullPageTemplateProps) => {
   // JSX
 
   return <StyledBody>{children}</StyledBody>;
 };
 
-export default LandingTemplate;
+export default FullPageTemplate;

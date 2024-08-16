@@ -1,12 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 
 import Emblem from "atoms/Emblem";
 import P from "atoms/P";
 
+import { MAIN_ROUTE } from "config/nav";
+import wSS from "lib/sessionStorage";
 import sleep from "lib/sleep";
 import { generateMediaQuery } from "lib/themeHelpers";
 
@@ -41,8 +43,8 @@ const StyledEmblemContainer = styled.div<{ $isPlaying: boolean }>(
 
     position: relative;
 
-    width: 25rem;
-    height: 25rem;
+    width: ${theme._spacings.LandingPage.emblemSize};
+    height: ${theme._spacings.LandingPage.emblemSize};
 
     animation: pulse ${theme.timings.medium} infinite;
 
@@ -167,6 +169,11 @@ const RootPage = () => {
     };
   });
 
+  useEffect(() => {
+    const hasSkippedIntro = wSS(window.sessionStorage).get("hasSkippedIntro");
+    hasSkippedIntro && redirect(MAIN_ROUTE);
+  }, []);
+
   // EVENT HANDLERS
 
   const handlePressPlay = () => {
@@ -186,7 +193,8 @@ const RootPage = () => {
   };
 
   const handleSkipClick = () => {
-    router.push("/locations");
+    wSS(sessionStorage).set("hasSkippedIntro", true);
+    router.push(MAIN_ROUTE);
   };
 
   // JSX

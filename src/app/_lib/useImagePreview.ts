@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { create } from "zustand";
 
 import loadImagesAsync from "lib/loadImagesAsync";

@@ -2,14 +2,14 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Suspense } from "react";
 
 import BodyTemplateProvider from "providers/BodyTemplateProvider";
+import FullScreenImageGalleryProvider from "providers/FullScreenImageGalleryProvider";
+import ModalProvider from "providers/ModalProvider";
 import PostHogProvider from "providers/PostHogProvider";
 import PostHogPageView from "providers/PostHogProvider/PostHogPageView";
 import StyledComponentsRegistry from "providers/StyledComponentsRegistry";
 import ThemeProvider from "providers/ThemeProvider";
 
 import HTML from "organisms/HTML";
-
-import FullScreenImageGallery from "atoms/FullScreenImageGallery";
 
 import metadataConfig from "config/metaData";
 
@@ -37,7 +37,8 @@ const RootLayout = ({ children }: RootLayoutProps) => {
             </Suspense>
             <BodyTemplateProvider>
               {children}
-              <FullScreenImageGallery />
+              <FullScreenImageGalleryProvider />
+              <ModalProvider />
             </BodyTemplateProvider>
           </HTML>
         </PostHogProvider>

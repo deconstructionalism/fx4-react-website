@@ -84,7 +84,7 @@ const StyledTitle = styled.div<{ $isShrunk: boolean }>(
       height: ${theme.spacings.xxs};
 
       background: ${theme.colors.black};
-      border-radius: 10rem;
+      border-radius: ${theme.spacings.xxxl};
 
       transition: all ${theme._timings.Header.shrinkTransition} ease;
     }
