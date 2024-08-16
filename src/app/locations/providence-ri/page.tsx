@@ -2,7 +2,6 @@
 
 import styled, { css } from "styled-components";
 
-import Button from "atoms/Button";
 import Divider from "atoms/Divider";
 import EventLineupBand from "atoms/EventLineupBand";
 import Image from "atoms/Image";
@@ -47,14 +46,6 @@ const StyledLineup = styled.div`
     width: 50%;
   }
 `;
-
-const StyledButton = styled(Button)(
-  ({ theme }) => css`
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: ${theme.spacings.s};
-  `,
-);
 
 const StyledFlyerContainer = styled.div(
   ({ theme }) => css`
@@ -201,12 +192,6 @@ const ProvidenceRI = () => {
         title={"by Simulacrean"}
         includeTitle
       />
-
-      <Divider />
-
-      <StyledButton onClick={handleTicketClick}>Buy Tickets</StyledButton>
-      <StyledButton onClick={handelRSVPClick}>RSVP For Afters</StyledButton>
-      <StyledButton onClick={handleDonationClick}>Donate</StyledButton>
 
       <Divider />
 
