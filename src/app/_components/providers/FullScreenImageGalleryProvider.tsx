@@ -17,7 +17,7 @@ import useImagePreview from "lib/useImagePreview";
 const StyledImageGallery = styled.div<{ $isOpen: boolean; $isHidden: boolean }>(
   ({ theme, $isOpen, $isHidden }) => css`
     position: fixed;
-    z-index: ${theme.zIndex.modal};
+    z-index: ${theme.zIndex.imageGallery};
     top: 0;
     left: 0;
 
@@ -27,6 +27,7 @@ const StyledImageGallery = styled.div<{ $isOpen: boolean; $isHidden: boolean }>(
     height: 100vh;
 
     background-color: ${theme.colors.black}77;
+    backdrop-filter: blur(${theme.spacings.xs});
     backdrop-filter: blur(${theme.spacings.xxs});
 
     animation: ${$isOpen ? "fade-in" : "fade-out"} ${theme.timings.fast} ease
@@ -59,11 +60,11 @@ const StyledCloseIcon = styled(FontAwesomeIcon)<{ $isOpen: boolean }>(
     cursor: pointer;
 
     position: relative;
-    z-index: ${theme.zIndex.modalControl};
+    z-index: ${theme.zIndex.imageGalleryControl};
 
     float: right;
 
-    margin: 2rem;
+    margin: ${theme.spacings.l};
 
     font-size: ${theme.spacings.xxxl};
     color: ${theme.colors.white};
@@ -93,8 +94,10 @@ const StyledImageContainer = styled.div<{
     width: calc(${$imageCount} * 100vw);
     height: 100vh;
     margin-left: calc(${$currentIndex} * 100vw * -1);
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: ${theme._spacings.FullScreenImageGalleryProvider
+      .verticalPadding};
+    padding-bottom: ${theme._spacings.FullScreenImageGalleryProvider
+      .verticalPadding};
 
     transition: margin-left ${theme.timings.fast} ease;
   `,
@@ -107,7 +110,7 @@ const StyledNavButton = styled(FontAwesomeIcon)<{
     cursor: pointer;
 
     position: absolute;
-    z-index: ${theme.zIndex.modalControl};
+    z-index: ${theme.zIndex.imageGalleryControl};
     top: 50%;
 
     padding: ${theme.spacings.m};
@@ -166,7 +169,7 @@ const StyledImage = styled.div<{ $src: string; $title: string }>(
   `,
 );
 
-const FullScreenImageGallery = () => {
+const FullScreenImageGalleryProvider = () => {
   // STATE
   const {
     currentIndex,
@@ -285,4 +288,4 @@ const FullScreenImageGallery = () => {
   );
 };
 
-export default FullScreenImageGallery;
+export default FullScreenImageGalleryProvider;

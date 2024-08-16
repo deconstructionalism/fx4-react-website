@@ -54,7 +54,7 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)<{
 
     ${$isClicked &&
     css`
-      font-size: 80rem;
+      font-size: ${theme._spacings.NotFound.clickedIconSize};
       color: ${theme.colors.alert};
     `}
   `,

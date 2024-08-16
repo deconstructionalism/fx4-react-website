@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 
 import Footer from "molecules/Footer";
 import Header from "molecules/Header";
 import NavBar from "molecules/NavBar";
+import SummaryStatementModal from "molecules/SummaryStatementModal";
 
+import SessionStorage from "@/app/_lib/sessionStorage";
 import { addThemeValues, generateMediaQuery } from "@/app/_lib/themeHelpers";
 import useHasSubMenu from "@/app/_lib/useHasSubMenu";
+import useModal from "@/app/_lib/useModal";
 
 // TYPES
 
@@ -73,10 +76,16 @@ const PageTemplate = ({ children }: PageTemplateProps) => {
 
   const [isShrunk, setIsShrunk] = useState<boolean>(false);
   const hasSubMenu = useHasSubMenu() !== undefined;
+  const openModal = useModal((state) => state.openModal);
+  const storage = useMemo(() => new SessionStorage(), []);
 
   // EFFECT HOOKS
 
   useEffect(() => handleScroll());
+
+  useEffect(() => {
+    !storage.get("hasReadSummary") && openModal(<SummaryStatementModal />);
+  }, [storage, openModal]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

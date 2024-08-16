@@ -48,42 +48,46 @@ const StyledLineup = styled.div`
   }
 `;
 
-const StyledButton = styled(Button)`
-  width: 90%;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-`;
+const StyledButton = styled(Button)(
+  ({ theme }) => css`
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: ${theme.spacings.s};
+  `,
+);
 
-const StyledFlyerContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+const StyledFlyerContainer = styled.div(
+  ({ theme }) => css`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-
-  & > div {
-    width: 32%;
-    height: 32%;
-  }
-
-  ${generateMediaQuery("desktop")(css`
-    & > div {
-      width: 49%;
-      height: 49%;
-    }
-  `)}
-
-  ${generateMediaQuery("tablet")(css`
-    gap: 4rem;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: ${theme.spacings.l};
 
     & > div {
-      width: 100%;
-      height: 100%;
+      width: 32%;
+      height: 32%;
     }
-  `)}
-`;
+
+    ${generateMediaQuery("desktop")(css`
+      & > div {
+        width: 49%;
+        height: 49%;
+      }
+    `)}
+
+    ${generateMediaQuery("tablet")(css`
+      gap: calc(${theme.spacings.l} * 2);
+
+      & > div {
+        width: 100%;
+        height: 100%;
+      }
+    `)}
+  `,
+);
 
 const StyledImage = styled(Image)`
   cursor: pointer;

@@ -1,12 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 
 import Emblem from "atoms/Emblem";
 import P from "atoms/P";
 
+import { MAIN_ROUTE } from "config/nav";
+import SessionStorage from "lib/sessionStorage";
 import sleep from "lib/sleep";
 import { generateMediaQuery } from "lib/themeHelpers";
 
@@ -41,8 +43,8 @@ const StyledEmblemContainer = styled.div<{ $isPlaying: boolean }>(
 
     position: relative;
 
-    width: 25rem;
-    height: 25rem;
+    width: ${theme._spacings.LandingPage.emblemSize};
+    height: ${theme._spacings.LandingPage.emblemSize};
 
     animation: pulse ${theme.timings.medium} infinite;
 
@@ -152,6 +154,7 @@ const RootPage = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const emblemRef = useRef<SVGSVGElement>(null);
   const router = useRouter();
+  const storage = useMemo(() => new SessionStorage(), []);
 
   // EFFECT HOOKS
 
@@ -166,6 +169,11 @@ const RootPage = () => {
       emblemElement?.removeEventListener("animationend", handleAnimationEnd);
     };
   });
+
+  useMemo(() => {
+    const hasSkippedIntro = storage.get("hasSkippedIntro");
+    hasSkippedIntro && redirect(MAIN_ROUTE);
+  }, [storage]);
 
   // EVENT HANDLERS
 
@@ -186,7 +194,8 @@ const RootPage = () => {
   };
 
   const handleSkipClick = () => {
-    router.push("/locations");
+    storage.set("hasSkippedIntro", true);
+    router.push(MAIN_ROUTE);
   };
 
   // JSX

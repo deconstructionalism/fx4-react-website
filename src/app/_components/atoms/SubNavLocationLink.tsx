@@ -13,7 +13,7 @@ const StyledLocation = styled.div<{ $dateText: string; $isHovering: boolean }>(
     align-items: center;
     justify-content: center;
 
-    width: 20rem;
+    width: ${theme._spacings.SubNavLocationLink.width};
     padding: ${theme.spacings.xxs} 0;
 
     font-family: ${theme.fonts.body};

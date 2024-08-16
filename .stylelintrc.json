@@ -13,7 +13,7 @@
       "files": ["*.{js,ts,jsx,tsx}"],
       "customSyntax": "postcss-styled-syntax",
       "rules": {
-        "unit-allowed-list": ["rem", "%", "deg", "vh", "vw"],
+        "unit-allowed-list": ["%", "deg", "vh", "vw"],
         "color-named": "never",
         "color-no-hex": true
       }

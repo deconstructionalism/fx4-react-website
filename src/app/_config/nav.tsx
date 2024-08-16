@@ -59,4 +59,6 @@ const NAV_CONFIG: NavItemConfig[] = [
   },
 ];
 
+export const MAIN_ROUTE = "/locations";
+
 export default NAV_CONFIG;

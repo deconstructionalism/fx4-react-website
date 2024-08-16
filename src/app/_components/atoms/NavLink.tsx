@@ -38,7 +38,7 @@ const StyledLinkText = styled.span<{ $isHovering: boolean }>(
     transform-origin: left;
     transform: scale(${$isHovering ? HOVER_SCALING : 1});
 
-    padding-left: 2rem;
+    padding-left: ${theme.spacings.l};
 
     font-size: ${theme.spacings.l};
     color: ${$isHovering ? theme.colors.white : theme.colors.gray};

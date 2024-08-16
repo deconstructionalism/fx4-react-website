@@ -70,6 +70,8 @@ const Z_INDEX_PALETTE = {
   navigation: 101,
   modal: 200,
   modalControl: 201,
+  imageGallery: 202,
+  imageGalleryControl: 203,
 } as const satisfies Record<string, number>;
 
 // CUSTOM PALETTES
@@ -122,11 +124,25 @@ const CUSTOM_SPACING_PALETTE = {
   SubNavLink: {
     height: "4rem",
   },
+  SubNavLocationLink: {
+    width: "20rem",
+  },
   LocationBanner: {
     titleLineHeight: "12rem",
   },
   LandingPage: {
     mobileAttributionSkipHeight: "13rem",
+    emblemSize: "25rem",
+  },
+  NotFound: {
+    clickedIconSize: "80rem",
+  },
+  FullScreenImageGalleryProvider: {
+    verticalPadding: "7rem",
+  },
+  ModalProvider: {
+    maxWidth: "100rem",
+    verticalMargin: "7rem",
   },
 } as const satisfies ComponentPalettes<SpacingPalette>;
 
