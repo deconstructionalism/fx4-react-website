@@ -1,5 +1,10 @@
 // TYPES
 
+interface FeatureFlag {
+  description: string;
+  active: boolean;
+}
+
 export interface TableRow {
   index: number;
 }
