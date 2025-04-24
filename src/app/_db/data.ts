@@ -1,5 +1,26 @@
 // DATA TABLES
-import { EventRow } from "@/app/_db/db.d";
+import { EventRow, FeatureFlag } from "@/app/_db/db.d";
+
+// HELPER FUNCTIONS
+/**
+ * Defines feature flags in an object allowing intellisense to access feature
+ * flag keys by name.
+ *
+ * @param flags - records of feature flags.
+ * @returns feature flags keyed by name.
+ */
+const defineFeatureFlags = <T extends Record<string, FeatureFlag>>(
+  flags: T,
+): T => {
+  return flags;
+};
+
+const featureFlags = defineFeatureFlags({
+  comingSoon2025: {
+    description: "2025 band and locations have yet to be announced",
+    active: true,
+  },
+});
 
 const eventsTable: EventRow[] = [
   {
@@ -340,4 +361,4 @@ const eventsTable: EventRow[] = [
   },
 ];
 
-export { eventsTable };
+export { eventsTable, featureFlags };

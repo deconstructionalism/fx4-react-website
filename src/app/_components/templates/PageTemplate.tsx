@@ -10,6 +10,7 @@ import SummaryStatementModal from "molecules/SummaryStatementModal";
 
 import wSS from "lib/sessionStorage";
 
+import cursor from "@/app/_db/cursor";
 import { addThemeValues, generateMediaQuery } from "@/app/_lib/themeHelpers";
 import useHasSubMenu from "@/app/_lib/useHasSubMenu";
 import useModal from "@/app/_lib/useModal";
@@ -73,6 +74,10 @@ const StyledMain = styled.main<{ $isShrunk: boolean; $hasSubMenu: boolean }>(
 );
 
 const PageTemplate = ({ children }: PageTemplateProps) => {
+  // DATA
+
+  const { comingSoon2025 } = cursor.get("featureFlags");
+
   // STATE
 
   const [isShrunk, setIsShrunk] = useState<boolean>(false);
@@ -84,9 +89,10 @@ const PageTemplate = ({ children }: PageTemplateProps) => {
   useEffect(() => handleScroll());
 
   useEffect(() => {
+    if (comingSoon2025.active) return;
     !wSS(sessionStorage).get("hasReadSummary") &&
       openModal(<SummaryStatementModal />);
-  }, [openModal]);
+  }, [openModal, comingSoon2025.active]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
