@@ -20,7 +20,7 @@ const StyledLocationBannerContainer = styled.section(
 
     background: ${theme.colors.black};
 
-    ${generateMediaQuery("tablet")(css`
+    ${generateMediaQuery("desktop")(css`
       flex-direction: column;
 
       & > *:not(:first-of-type),
@@ -38,21 +38,10 @@ const StyledLocationBannerContainer = styled.section(
   `,
 );
 
-const StyledLocationsTBA2025 = styled.p(
-  ({ theme }) => css`
-    font-family: ${theme.fonts.heading};
-    font-size: ${theme.spacings.xl};
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-  `,
-);
-
 const Locations = () => {
   // DATA
 
   const eventsData = cursor.get("events");
-  const { comingSoon2025 } = cursor.get("featureFlags");
 
   // LOGIC
 
@@ -62,11 +51,7 @@ const Locations = () => {
 
   // JSX
 
-  return comingSoon2025.active ? (
-    <StyledLocationsTBA2025>
-      2025 bands and locations<br></br>will be announced soon!
-    </StyledLocationsTBA2025>
-  ) : (
+  return (
     <StyledLocationBannerContainer>
       {LocationBanners}
     </StyledLocationBannerContainer>

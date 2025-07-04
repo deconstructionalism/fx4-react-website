@@ -15,22 +15,18 @@ const defineFeatureFlags = <T extends Record<string, FeatureFlag>>(
   return flags;
 };
 
-const featureFlags = defineFeatureFlags({
-  comingSoon2025: {
-    description: "2025 band and locations have yet to be announced",
-    active: true,
-  },
-});
+const featureFlags = defineFeatureFlags({});
 
 const eventsTable: EventRow[] = [
   {
     index: 0,
     location: {
-      city: "Lowell",
-      state: "MA",
-      name: "DM for address",
+      city: "Chicago",
+      state: "IL",
+      name: "Collider Underground",
+      street: "DM for address",
     },
-    date: new Date(2024, 6, 4),
+    date: new Date(2025, 6, 4),
     narrowBannerImage: {
       src: "/images/location-banners/lowell.jpg",
       title:
@@ -38,105 +34,298 @@ const eventsTable: EventRow[] = [
     },
     socialMediaLinks: {
       instagram: {
-        href: "https://www.instagram.com/p/C7EYaPFuehZ/",
+        href: "https://www.instagram.com/p/DLKoR6isTF_/",
         title: "Instagram",
       },
     },
     eventLinks: {},
-    ticketCost: "$5",
+    ticketCost: "$10 or PWYC NOTAFLOF",
     lineup: [
-      {
-        name: "Dying In Space",
-        socialMediaLinks: {
-          bandcamp: { href: "https://dyinginspace.bandcamp.com/" },
-        },
-      },
-      { name: "Abdul Sherazi" },
-      { name: "Professor A" },
-      {
-        name: "Cryptwarbler",
-        socialMediaLinks: {
-          bandcamp: { href: "https://cryptwarbler.bandcamp.com/" },
-        },
-      },
-      {
-        name: "Closer Bones",
-        socialMediaLinks: {
-          bandcamp: { href: "https://closerbones.bandcamp.com/" },
-        },
-      },
-      {
-        name: "Birdorgan",
-        socialMediaLinks: {
-          bandcamp: { href: "https://birdorgan.bandcamp.com/" },
-        },
-      },
-      { name: "Killashandra Doe" },
-      {
-        name: "Dino Crisis",
-        socialMediaLinks: {
-          bandcamp: { href: "https://dinocrisis.bandcamp.com/" },
-        },
-      },
-      {
-        name: "R.C. Christian",
-        socialMediaLinks: {
-          instagram: { href: "https://www.instagram.com/r_c_christian/" },
-        },
-      },
-      {
-        name: "The Cost Ov Living",
-        socialMediaLinks: {
-          bandcamp: { href: "https://thecol.bandcamp.com/" },
-        },
-      },
-      { name: "A.Drift" },
-      {
-        name: "She/They Hazard",
-        socialMediaLinks: {
-          instagram: { href: "https://www.instagram.com/she_theyhazard/" },
-        },
-      },
       {
         name: "Butt Mommy",
         socialMediaLinks: {
-          bandcamp: { href: "https://buttmommy.bandcamp.com" },
+          bandcamp: { href: "https://buttmommy.bandcamp.com/" },
+        },
+      },
+      { name: "Animatronic" },
+      {
+        name: "Melon Sprout",
+        socialMediaLinks: {
+          bandcamp: { href: "https://melonsprout4.bandcamp.com/" },
         },
       },
       {
-        name: "Zilmrah",
+        name: "Consumer",
         socialMediaLinks: {
-          bandcamp: { href: "https://zilmrah.bandcamp.com/" },
+          bandcamp: { href: "https://consumermp.bandcamp.com/" },
         },
       },
       {
-        name: "Whitey Alabastard",
-        socialMediaLinks: {
-          bandcamp: {
-            href: "https://figurerecords.bandcamp.com/album/perdition",
-          },
-        },
+        name: "Clark Woods",
       },
       {
-        name: "Farrah Faucet",
+        name: "New Goo",
         socialMediaLinks: {
-          bandcamp: { href: "https://farrahfaucet.bandcamp.com/" },
-        },
-      },
-      {
-        name: "Yotzeret Sheydim",
-        socialMediaLinks: {
-          bandcamp: { href: "https://yotzeretsheydim.bandcamp.com/" },
+          bandcamp: { href: "https://newgoo.bandcamp.com/" },
         },
       },
     ],
     eventPoster: {
-      src: "/images/posters/lowell.jpg",
+      src: "/images/posters/chicago.jpg",
       title: "by @jefrey_with_1f on Instagram.",
     },
   },
   {
     index: 1,
+    location: {
+      name: "Mayday Space",
+      street: "176 St Nicholas Ave",
+      city: "Brooklyn",
+      state: "NY",
+      website: { href: "https://maydayspace.org/" },
+    },
+    date: new Date(2025, 6, 4),
+    narrowBannerImage: {
+      src: "/images/location-banners/brooklyn.jpg",
+      title: "Photo from New Versus City 4 by @zippeee on Instagram.",
+    },
+    socialMediaLinks: {
+      instagram: {
+        href: "https://www.instagram.com/fuckthefourthfest.nyc/",
+        title: "Instagram",
+      },
+    },
+    eventLinks: {},
+    ticketCost: "$20-60 donation; $10-30 NOTAFLOF 4 QTBIPOC; Bring cash",
+    lineup: [
+      {
+        name: "Dreamcrusher",
+        socialMediaLinks: {
+          bandcamp: { href: "https://dreamcrusher.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Samantha Riot",
+        socialMediaLinks: {
+          bandcamp: { href: "https://samanthariott.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Bonnie Baxter",
+        socialMediaLinks: {
+          bandcamp: { href: "https://killalters.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Indigequeer",
+        socialMediaLinks: {
+          bandcamp: { href: "https://www.instagram.com/indigequeer/" },
+        },
+      },
+      {
+        name: "Dad",
+      },
+      {
+        name: "0ophoro",
+        socialMediaLinks: {
+          bandcamp: { href: "https://0ophoro.bandcamp.com/" },
+        },
+      },
+      {
+        name: '"Sweet"',
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/gatebreaking/" },
+        },
+      },
+      {
+        name: "Kwami",
+        socialMediaLinks: {
+          bandcamp: { href: "https://kwamiwinfield.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Mankid",
+        website: { href: "https://machin3gir1.com/" },
+      },
+      {
+        name: "Reagan Holiday",
+        socialMediaLinks: {
+          bandcamp: { href: "https://reaganholiday.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Milkmans Molotov",
+        socialMediaLinks: {
+          bandcamp: { href: "https://milkmansmolotov.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Safra",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/safratadesse/" },
+        },
+      },
+      {
+        name: "Dagger Wound",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/dagger.wound/" },
+        },
+      },
+      {
+        name: "Mira Mira",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/miraaasamiraaa/" },
+        },
+      },
+      {
+        name: "Gladstone Deluxe",
+        socialMediaLinks: {
+          bandcamp: { href: "https://gladstonebutler.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Key Hutch",
+        socialMediaLinks: {
+          bandcamp: { href: "https://keyhutch.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Nana XOXO",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/luvnanaxoxo" },
+        },
+      },
+      {
+        name: "Rohana",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/r.o.h.a.n.a/" },
+        },
+      },
+      {
+        name: "Harpy",
+        socialMediaLinks: {
+          bandcamp: { href: "https://harpyprovidence.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Tamio Shiraishi",
+        socialMediaLinks: {
+          bandcamp: { href: "https://shiraishitamio.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Rocco",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/roccorr/" },
+        },
+      },
+      {
+        name: "Neve",
+      },
+    ],
+    eventPoster: {
+      src: "/images/posters/brooklyn.jpg",
+      title: "by @gatebreaking on Instagram.",
+    },
+  },
+  {
+    index: 2,
+    location: {
+      name: "Trans Pecos",
+      street: "916 Wyckoff Ave",
+      city: "Ridgewood",
+      state: "NY",
+      website: { href: "https://www.thetranspecos.com/" },
+    },
+    date: new Date(2025, 6, 4),
+    narrowBannerImage: {
+      src: "/images/location-banners/ridgewood.jpg",
+      title: "Photo from @imm0l888 on Instagram.",
+    },
+    socialMediaLinks: {
+      instagram: {
+        href: "https://www.instagram.com/p/DLWB3a8Nr2n/",
+        title: "Instagram",
+      },
+    },
+    eventLinks: {
+      ticketLink: {
+        href: "https://tickets.venuepilot.com/e/immolate-fuck-the-4th-burn-down-the-usa-2025-07-04-trans-pecos-ridgewood-queens-f012ba",
+      },
+    },
+    ticketCost: "$17 pre-sale, $20 at the door, 21+",
+    lineup: [
+      {
+        name: "Bacterial Lawn",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/bacteriallawn/" },
+        },
+      },
+      {
+        name: "537h",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/537h.00/" },
+        },
+      },
+      {
+        name: "Bubblegum Octopus",
+        socialMediaLinks: {
+          bandcamp: { href: "https://bubblegumoctopus.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Deejay Chainwallet",
+        socialMediaLinks: {
+          soundcloud: { href: "https://soundcloud.com/deejaychainwallet" },
+        },
+      },
+      {
+        name: "Grooming",
+        socialMediaLinks: {
+          bandcamp: { href: "https://aleclambert.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Zac-a-rama!",
+        socialMediaLinks: {
+          bandcamp: { href: "https://zacarama.bandcamp.com/" },
+        },
+      },
+      {
+        name: "AKAFAË",
+        socialMediaLinks: {
+          instagram: { href: "https://akafae.bandcamp.com/" },
+        },
+      },
+      {
+        name: "DJ Necroface",
+        socialMediaLinks: {
+          soundcloud: { href: "https://soundcloud.com/flyv33/" },
+        },
+      },
+      {
+        name: "Sodomahigomorra",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/sodomahigomorra" },
+        },
+      },
+      {
+        name: "Fortified Structures",
+        socialMediaLinks: {
+          bandcamp: { href: "https://fortifiedstructures.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Cuntry Girls Make Do",
+      },
+    ],
+    eventPoster: {
+      src: "/images/posters/ridgewood.jpeg",
+      title: "by @gatebreaking on Instagram.",
+    },
+  },
+  {
+    index: 3,
     location: {
       street: "115 Empire St",
       city: "Providence",
@@ -144,8 +333,8 @@ const eventsTable: EventRow[] = [
       name: "AS220",
     },
     announcement:
-      "We've had a few lineup changes: lal, Foco, and Airbag dropped and we have added Tokarev (PVD) and Trace Amount (NYC).",
-    date: new Date(2024, 6, 5),
+      "DOLLHOUSE had to drop (but we'll see em again soon 🤞); CATALYST has entered the ring.",
+    date: new Date(2025, 6, 5),
     narrowBannerImage: {
       src: "/images/location-banners/pvd.jpg",
       title:
@@ -162,200 +351,237 @@ const eventsTable: EventRow[] = [
       },
     },
     eventLinks: {
-      // ticketLink: {
-      //   href: "https://www.zeffy.com/en-US/ticketing/2a39a78f-08a8-4cc6-b559-4ac93a61e5c6",
-      //   title: "Buy tickets now!",
-      //   externalLink: true,
-      // },
+      ticketLink: {
+        href: "https://www.zeffy.com/en-US/ticketing/fx4f--2025",
+        title: "Buy tickets now!",
+        externalLink: true,
+      },
       merchandiseLink: {
         href: "https://fx4fest.square.site",
         title: "Get official drip!",
         externalLink: true,
       },
-      // donationLink: {
-      //   href: "https://gofund.me/bd65c9a6",
-      //   title: "Donate to the fest and fundraiser",
-      //   externalLink: true,
-      // },
+      donationLink: {
+        href: "https://www.gofundme.com/f/support-fx4-providence-2025",
+        title: "Donate to the fest and fundraiser",
+        externalLink: true,
+      },
     },
     ticketCost: "$25, all ages",
     lineup: [
       {
-        name: "Trophy Hunt",
+        name: "afk",
         socialMediaLinks: {
-          bandcamp: {
-            href: "https://trophyhunt.bandcamp.com/album/the-branches-on-either-side",
-          },
+          bandcamp: { href: "https://afktba.bandcamp.com/" },
         },
       },
       {
-        name: "Gyna Bootleg",
+        name: "Biproduct",
         socialMediaLinks: {
-          bandcamp: { href: "https://gynabootleg.bandcamp.com/" },
+          bandcamp: { href: "https://biproduct.bandcamp.com/" },
         },
       },
       {
-        name: "Tokarev",
+        name: "Dagger Wound",
         socialMediaLinks: {
-          instagram: {
-            href: "https://www.instagram.com/our.providence/reel/C8UlXvosbjk",
-          },
+          instagram: { href: "https://www.instagram.com/dagger.wound" },
         },
       },
       {
-        name: "Dogwalker",
+        name: "Bloody Blue",
         socialMediaLinks: {
-          bandcamp: { href: "https://dogwalker.bandcamp.com/" },
+          instagram: { href: "https://www.instagram.com/portal.body" },
         },
       },
       {
-        name: "Potters Field",
+        name: "Film & Gender",
         socialMediaLinks: {
-          bandcamp: { href: "https://pottersfieldnj.bandcamp.com/" },
+          bandcamp: { href: "https://filmandgender.bandcamp.com/" },
         },
       },
       {
-        name: "Persona",
+        name: "Future Blondes",
         socialMediaLinks: {
-          bandcamp: { href: "https://personanyc.bandcamp.com/" },
+          bandcamp: { href: "https://futureblondes.bandcamp.com/" },
         },
       },
       {
-        name: "Annihil",
+        name: "Housefire",
         socialMediaLinks: {
-          bandcamp: { href: "https://annihil.bandcamp.com/" },
-        },
-      },
-      {
-        name: "Rectrix",
-        socialMediaLinks: {
-          bandcamp: {
-            href: "https://bonedustprov.bandcamp.com/album/desperate-measure",
+          youtube: {
+            href: "https://www.youtube.com/watch?v=LyD--sLgx7Q&list=RDLyD--sLgx7Q&start_radio=1",
           },
         },
       },
       {
         name: "Move",
         socialMediaLinks: {
-          bandcamp: { href: "https://move-bhc.bandcamp.com/" },
-        },
-      },
-      { name: "Sync Sapro", website: { href: "https://www.syncsapro.com/" } },
-      {
-        name: "Pharmakon",
-        socialMediaLinks: {
-          bandcamp: { href: "https://pharmakon.bandcamp.com/" },
+          bandcamp: {
+            href: "https://move-bhc.bandcamp.com/",
+          },
         },
       },
       {
-        name: "MKOUR VILIJI",
+        name: "Noise Nomads",
         socialMediaLinks: {
-          bandcamp: { href: "https://mackenzierecordsyou.bandcamp.com/" },
+          instagram: { href: "https://www.instagram.com/hairyparchment/" },
         },
       },
       {
-        name: "Phagocyte",
+        name: "Palmslow",
         socialMediaLinks: {
-          bandcamp: { href: "https://phagocyte-doesnt-like-u.bandcamp.com/" },
+          instagram: { href: "https://www.instagram.com/palmslowpvd" },
         },
       },
       {
-        name: "Fatboi Sharif",
+        name: "Pleasure Coffin",
         socialMediaLinks: {
-          bandcamp: { href: "https://fatboisharif.bandcamp.com" },
+          instagram: { href: "https://www.instagram.com/pleasurecoffin/" },
         },
       },
       {
-        name: "Rejekts",
+        name: "Sediment Club",
         socialMediaLinks: {
-          bandcamp: { href: "https://rejektsboston.bandcamp.com/" },
+          bandcamp: { href: "https://sedimentclub.bandcamp.com/" },
         },
       },
       {
-        name: "Trace Amount",
+        name: "The Tarrys",
         socialMediaLinks: {
-          bandcamp: { href: "https://traceamountnyc.bandcamp.com" },
+          bandcamp: { href: "https://thetarrys.bandcamp.com/" },
+        },
+      },
+      {
+        name: "whatwewas",
+        socialMediaLinks: {
+          bandcamp: { href: "https://whatwewas.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Body Farm",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/bodyfarmohpa/" },
+        },
+      },
+      {
+        name: "Catalyst",
+        socialMediaLinks: {
+          bandcamp: { href: "https://catalystsucks420.bandcamp.com/" },
+        },
+      },
+      {
+        name: "Posterboy 2000",
+        socialMediaLinks: {
+          bandcamp: { href: "https://posterboy2000.bandcamp.com/" },
+        },
+      },
+      {
+        name: "XBongX",
+        socialMediaLinks: {
+          bandcamp: { href: "https://xbongx.bandcamp.com/" },
         },
       },
     ],
     eventPoster: {
       src: "/images/posters/providence.jpg",
-      title: "by Pippi Zornova.",
+      title: "by Aaron Demuth.",
     },
   },
   {
-    index: 2,
+    index: 4,
     location: {
-      street: "176 St Nicholas Ave",
-      city: "Brooklyn",
-      state: "NY",
-      name: "Mayday Space",
+      street: "3 Harvard Ave",
+      city: "Boston",
+      state: "MA",
+      name: "O'Briens Pub",
+      website: { href: "https://obrienspubboston.com/" },
     },
-    date: new Date(2024, 6, 6),
+    date: new Date(2025, 6, 6),
     narrowBannerImage: {
-      src: "/images/location-banners/nyc.jpg",
-      title: "Photo of c?c? by ??.",
+      src: "/images/location-banners/boston.jpg",
+      title: "Fest poster by @riotlrrrkhi on Instagram.",
     },
     socialMediaLinks: {
       instagram: {
-        href: "https://www.instagram.com/fuckthefourthfest.nyc",
+        href: "https://www.instagram.com/fuckthefourthfest.boston",
       },
     },
-    eventLinks: {},
+    eventLinks: {
+      ticketLink: {
+        href: "https://obrienspubboston.com/show/fx4-fest-boston/",
+      },
+    },
     eventPoster: {
-      src: "/images/posters/brooklyn.jpg",
-      title: "by @unsanctuary on Instagram.",
+      src: "/images/posters/boston.jpg",
+      title: "by @riotlrrrkhi on Instagram.",
     },
     lineup: [
       {
-        name: "Pharmakon",
+        name: "Kwami",
         socialMediaLinks: {
-          bandcamp: { href: "https://pharmakon.bandcamp.com/" },
+          bandcamp: { href: "https://kwamiwinfield.bandcamp.com/" },
         },
       },
       {
-        name: "Blu Anxxiety",
+        name: "TOTM",
         socialMediaLinks: {
-          bandcamp: { href: "https://bluanxxiety.bandcamp.com/" },
+          instagram: { href: "https://www.instagram.com/totm.bpm/" },
         },
       },
       {
-        name: "Murder Pact",
+        name: "Trophy Hunt",
         socialMediaLinks: {
-          bandcamp: { href: "https://murderpact.bandcamp.com/" },
+          bandcamp: { href: "https://trophyhunt.bandcamp.com/" },
         },
       },
       {
-        name: "Foco",
+        name: "Sadnoise",
         socialMediaLinks: {
           bandcamp: {
-            href: "https://focoizm.bandcamp.com/",
+            href: "https://sadnoise.bandcamp.com/",
           },
         },
       },
       {
-        name: "Mercury Symbol",
+        name: "Pushback",
         socialMediaLinks: {
           bandcamp: {
-            href: "https://mercurysymbol.bandcamp.com/",
+            href: "https://pushbackma.bandcamp.com/",
           },
         },
       },
       {
-        name: "Jacob Winans",
+        name: "Lani Asunción",
+        website: {
+          href: "https://laniasuncion.com/",
+        },
+      },
+      {
+        name: "Andro Queen",
         socialMediaLinks: {
           bandcamp: {
-            href: "https://1-1-7.bandcamp.com/album/117-13-bound-for-the-floor",
+            href: "https://androqueen.bandcamp.com/",
           },
         },
       },
       {
-        name: "Saturn Lavender",
+        name: "Unhinged",
         socialMediaLinks: {
           bandcamp: {
-            href: "https://saturnlavender.bandcamp.com/album/green-in-grey",
+            href: "https://unhinged-bhc.bandcamp.com/",
           },
         },
+      },
+      {
+        name: "Unhinged",
+        socialMediaLinks: {
+          bandcamp: {
+            href: "https://unhinged-bhc.bandcamp.com/",
+          },
+        },
+      },
+      {
+        name: "Exit Seraphim",
       },
     ],
   },

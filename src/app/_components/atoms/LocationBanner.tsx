@@ -81,7 +81,7 @@ const StyledLocationTitle = styled.p(
     position: absolute;
 
     font-family: ${theme.fonts.body};
-    font-size: ${theme.spacings.xxl};
+    font-size: ${theme.spacings.xl};
     font-weight: bold;
     line-height: ${theme._spacings.LocationBanner.titleLineHeight};
     color: ${theme.colors.white};
@@ -90,7 +90,7 @@ const StyledLocationTitle = styled.p(
     letter-spacing: ${theme.spacings.xxs};
     white-space: pre-line;
 
-    ${generateMediaQuery("tablet")(css`
+    ${generateMediaQuery("desktop")(css`
       margin-top: calc(${theme.spacings.xxxl} * -1);
       font-size: ${theme.spacings.xxxl};
       letter-spacing: ${theme.spacings.xs};
@@ -110,7 +110,7 @@ const StyledDateTitle = styled.p(
     letter-spacing: ${theme.spacings.xs};
     white-space: pre-line;
 
-    ${generateMediaQuery("tablet")(css`
+    ${generateMediaQuery("desktop")(css`
       margin-top: ${theme.spacings.xxxl};
       font-size: ${theme.spacings.xxl};
       letter-spacing: ${theme.spacings.xxs};

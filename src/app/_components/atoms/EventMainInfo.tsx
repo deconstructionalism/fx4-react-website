@@ -56,7 +56,7 @@ interface EventMainInfoProps {
 const EventMainInfo = ({ data }: EventMainInfoProps) => {
   // DATA
 
-  const { lineup, location, date, ticketCost } = data;
+  const { location, date, ticketCost, title = "FUCK THE FOURTH FEST" } = data;
 
   // LOGIC
 
@@ -68,7 +68,7 @@ const EventMainInfo = ({ data }: EventMainInfoProps) => {
   return (
     <div>
       <StyledFestName>
-        <h1>FUCK THE FOURTH FEST</h1>
+        <h1>{title}</h1>
       </StyledFestName>
       <StyledTitleText>{titleText}</StyledTitleText>
       <StyledSubTitleText>{`${locationText}`}</StyledSubTitleText>
