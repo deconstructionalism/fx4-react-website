@@ -4,13 +4,16 @@ import styled, { css } from "styled-components";
 
 import Divider from "atoms/Divider";
 import EventLineupBand from "atoms/EventLineupBand";
+import EventLinkBar from "atoms/EventLinkBar";
+import EventMainInfo from "atoms/EventMainInfo";
 import Image from "atoms/Image";
-import P from "atoms/P";
 
 import { generateMediaQuery } from "lib/themeHelpers";
 
-import { BandData, ImageData } from "@/app/_db/db";
-import useImagePreview from "@/app/_lib/useImagePreview";
+import EventAnnouncement from "@/app/_components/atoms/EventAnnouncement";
+import EventPoster from "@/app/_components/atoms/EventPoster";
+import EventLineupTable from "@/app/_components/molecules/EventLineupTable";
+import { EventRow } from "@/app/_db/db";
 
 // CONSTANTS
 
@@ -47,164 +50,78 @@ const StyledLineup = styled.div`
   }
 `;
 
-const StyledFlyerContainer = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: ${theme.spacings.l};
-
-    & > div {
-      width: 32%;
-      height: 32%;
-    }
-
-    ${generateMediaQuery("desktop")(css`
-      & > div {
-        width: 49%;
-        height: 49%;
-      }
-    `)}
-
-    ${generateMediaQuery("tablet")(css`
-      gap: calc(${theme.spacings.l} * 2);
-
-      & > div {
-        width: 100%;
-        height: 100%;
-      }
-    `)}
-  `,
-);
-
-const StyledImage = styled(Image)`
-  cursor: pointer;
-  width: 100%;
-  height: auto;
-`;
-
 const ProvidenceRI = () => {
-  // STATE
-
-  const openGallery = useImagePreview((state) => state.openGallery);
-
   // DATA
 
-  const aftersLineup: BandData[] = [
-    {
-      name: "Sodomahigomorra",
-      socialMediaLinks: {
-        instagram: { href: "https://www.instagram.com/sodomahigomorra" },
+  const aftersEventRow: EventRow = {
+    title: "OFFICIAL AFTERS",
+    index: 0,
+    location: {
+      name: "Pyxis",
+      city: "Providence",
+      state: "RI",
+      street: "25 Manton Ave",
+      website: { href: "https://pyxispvd.neocities.org/" },
+    },
+    date: new Date(2025, 6, 5),
+    socialMediaLinks: {
+      instagram: { href: "https://www.instagram.com/p/DKscpZdPJQC" },
+    },
+    eventLinks: {
+      ticketLink: {
+        href: "https://posh.vip/e/fuck-the-fourth-fest-2025-official-afters",
       },
     },
-    {
-      name: "Skullfucker",
-      socialMediaLinks: {
-        instagram: { href: "https://www.instagram.com/sssspikeeee" },
+    ticketCost: "$15-25, $10 for fest attendees",
+    lineup: [
+      {
+        name: "Swan Meat",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/swan.meat/" },
+        },
       },
-    },
-    {
-      name: "Slepting",
-      socialMediaLinks: {
-        bandcamp: { href: "https://slepting.bandcamp.com/track/cenote" },
+      {
+        name: "Isabella Koen",
+        socialMediaLinks: {
+          instagram: {
+            href: "https://www.instagram.com/isabellas_deluded_fantasy/",
+          },
+        },
       },
-    },
-    {
-      name: "Feardotcom",
-      socialMediaLinks: {
-        bandcamp: { href: "https://feardotc0m.bandcamp.com/" },
+      {
+        name: "B2",
+        socialMediaLinks: {
+          instagram: { href: "https://www.instagram.com/b_squareddd/" },
+        },
       },
+    ],
+    eventPoster: {
+      src: "/images/posters/providence-afters.jpg",
+      title: "by @_._simulacrean_._ on Instagram.",
     },
-  ];
-
-  const benefitImages: ImageData[] = [
-    {
-      src: "/images/posters/providence-5-31-benefit.png",
-      title: "flyer by @buttcliff on Instagram",
+    narrowBannerImage: {
+      src: "",
+      title: "",
     },
-    {
-      src: "/images/posters/providence-6-1-benefit.png",
-      title: "flyer by @romero_a_crow on Instagram",
-    },
-    {
-      src: "/images/posters/providence-6-14-benefit.jpg",
-      title: "flyer by @timetravelfuckmissile on Instagram",
-    },
-  ];
-
-  // EVENT HANDLERS
-
-  const handleDonationClick = () =>
-    window.open("https://gofund.me/2725d7e0", "_blank");
-
-  const handleTicketClick = () => {
-    window.open(
-      "https://www.zeffy.com/en-US/ticketing/2a39a78f-08a8-4cc6-b559-4ac93a61e5c6",
-      "_blank",
-    );
-  };
-
-  const handelRSVPClick = () => {
-    window.open(
-      "https://docs.google.com/forms/d/e/1FAIpQLSe0EHS7qg_DcMCKOCAYs2PjtvhcJvGIVFBK2I2dIwiDAFG-1w/viewform",
-      "_blank",
-    );
-  };
-
-  const handleImageClick = (index: number) => {
-    openGallery(benefitImages, index);
   };
 
   // LOGIC
 
-  const Bands = aftersLineup
+  const Bands = aftersEventRow.lineup
     .sort((a, b) => a.name.length - b.name.length)
     .map((bandData, index) => {
       return <EventLineupBand key={index} bandData={bandData} />;
     });
 
-  const BenefitFlyers = benefitImages.map((image, index) => (
-    <StyledImage
-      key={index}
-      src={image.src}
-      alt={image.title}
-      title={image.title}
-      onClick={() => handleImageClick(index)}
-      includeTitle
-    />
-  ));
-
   // JSX
 
   return (
     <section>
-      <StyledTitle>Official afters at Black Lace featuring</StyledTitle>
-      <StyledLineup>{Bands}</StyledLineup>
-
-      <Divider />
-
-      <StyledPosterImage
-        src={"/images/posters/providence-afters.png"}
-        alt={"by Simulacrean"}
-        title={"by Simulacrean"}
-        includeTitle
-      />
-
-      <Divider />
-
-      <P>
-        We are trying to run this years fest as a <b>benefit for Gaza</b>, and
-        we are trying to <b>keep our ticket prices low</b>.
-      </P>
-      <P>
-        In order to do this, we are running a few benefit shows to cover the
-        costs of the fest, or{" "}
-        <b>if you want to donate directly, you can use the button below</b>.
-      </P>
-      <StyledFlyerContainer>{BenefitFlyers}</StyledFlyerContainer>
+      <EventMainInfo data={aftersEventRow} />
+      <EventLinkBar data={aftersEventRow} />
+      <EventPoster data={aftersEventRow} />
+      <EventAnnouncement data={aftersEventRow} />
+      <EventLineupTable data={aftersEventRow} />
     </section>
   );
 };

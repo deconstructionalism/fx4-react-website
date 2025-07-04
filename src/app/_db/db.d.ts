@@ -26,6 +26,7 @@ export interface SocialMediaLinkData {
   twitter?: LinkData;
   bandcamp?: LinkData;
   youtube?: LinkData;
+  soundcloud?: LinkData;
 }
 
 export interface LocationData {
@@ -57,6 +58,7 @@ export interface EventRow extends TableRow {
   index: number;
   location: LocationData;
   date: Date;
+  title?: string;
   narrowBannerImage: ImageData;
   socialMediaLinks: SocialMediaLinkData;
   eventLinks: EventLinkData;

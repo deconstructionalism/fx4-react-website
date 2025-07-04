@@ -5,10 +5,6 @@ import NAV_CONFIG from "config/nav";
 import cursor from "@/app/_db/cursor";
 
 const useHasSubMenu = () => {
-  // DATA
-
-  const { comingSoon2025 } = cursor.get("featureFlags");
-
   // STATE
 
   const segments = useSelectedLayoutSegments();
@@ -19,8 +15,9 @@ const useHasSubMenu = () => {
   const navItemConfig = NAV_CONFIG.find(
     ({ href }) => href.replace("/", "") === firstSegment,
   );
+  console.log(segments);
   const subNavConfig =
-    firstSegment === "locations" && comingSoon2025.active
+    firstSegment === "locations" && segments.length === 1
       ? undefined
       : navItemConfig?.subNavConfig;
 
