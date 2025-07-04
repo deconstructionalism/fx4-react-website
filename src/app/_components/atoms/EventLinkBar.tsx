@@ -3,6 +3,7 @@ import {
   faBandcamp,
   faFacebook,
   faInstagram,
+  faSoundcloud,
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
@@ -27,6 +28,7 @@ const SOCIAL_MEDIA_ICONS = {
   youtube: faYoutube,
   twitter: faTwitter,
   bandcamp: faBandcamp,
+  soundcloud: faSoundcloud,
 } satisfies Record<keyof EventRow["socialMediaLinks"], IconDefinition>;
 
 const EVENT_LINK_ICONS = {
