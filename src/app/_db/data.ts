@@ -23,6 +23,7 @@ const eventsTable: EventRow[] = [
     location: {
       city: "Chicago",
       state: "IL",
+      cityShort: "CHI",
       name: "Collider Underground",
       street: "DM for address",
     },
@@ -82,6 +83,7 @@ const eventsTable: EventRow[] = [
       street: "176 St Nicholas Ave",
       city: "Brooklyn",
       state: "NY",
+      cityShort: "BK",
       website: { href: "https://maydayspace.org/" },
     },
     date: new Date(2025, 6, 4),
@@ -234,6 +236,7 @@ const eventsTable: EventRow[] = [
       name: "Trans Pecos",
       street: "916 Wyckoff Ave",
       city: "Ridgewood",
+      cityShort: "RDGWD",
       state: "NY",
       website: { href: "https://www.thetranspecos.com/" },
     },
@@ -330,6 +333,7 @@ const eventsTable: EventRow[] = [
       street: "115 Empire St",
       city: "Providence",
       state: "RI",
+      cityShort: "PVD",
       name: "AS220",
     },
     announcement:
@@ -493,6 +497,7 @@ const eventsTable: EventRow[] = [
       street: "3 Harvard Ave",
       city: "Boston",
       state: "MA",
+      cityShort: "BOS",
       name: "O'Briens Pub",
       website: { href: "https://obrienspubboston.com/" },
     },
@@ -561,14 +566,6 @@ const eventsTable: EventRow[] = [
         socialMediaLinks: {
           bandcamp: {
             href: "https://androqueen.bandcamp.com/",
-          },
-        },
-      },
-      {
-        name: "Unhinged",
-        socialMediaLinks: {
-          bandcamp: {
-            href: "https://unhinged-bhc.bandcamp.com/",
           },
         },
       },

@@ -12,14 +12,28 @@ import { eventToURL } from "lib/databaseTransformers";
 import cursor from "@/app/_db/cursor";
 import { EventRow } from "@/app/_db/db.d";
 
+import { useBreakpoint } from "../_lib/themeHelpers";
+
 // HELPER FUNCTIONS
+
+interface SubNavTitleProps {
+  event: EventRow;
+}
+
+const SubNavTitle = ({ event }: SubNavTitleProps) => {
+  // STATE
+
+  const isTablet = useBreakpoint("tablet", "min-width");
+
+  return isTablet ? event.location.city : event.location.cityShort;
+};
 
 /**
  * Convert an event table row to a sub-navigation item.
  * @param location - the event table row to convert to a sub-navigation item.
  */
 const cityToSubNavItemConfig = (event: EventRow): SubNavItemConfig => ({
-  title: event.location.city,
+  title: <SubNavTitle event={event} />,
   href: eventToURL(event),
 });
 

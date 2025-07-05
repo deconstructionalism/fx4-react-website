@@ -36,6 +36,7 @@ export interface LocationData {
   state: string;
   socialMediaLinks?: SocialMediaLinkData;
   website?: LinkData;
+  cityShort: string;
 }
 
 export interface BandData {
