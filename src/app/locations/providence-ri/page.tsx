@@ -59,6 +59,7 @@ const ProvidenceRI = () => {
     location: {
       name: "Pyxis",
       city: "Providence",
+      cityShort: "PVD",
       state: "RI",
       street: "25 Manton Ave",
       website: { href: "https://pyxispvd.neocities.org/" },

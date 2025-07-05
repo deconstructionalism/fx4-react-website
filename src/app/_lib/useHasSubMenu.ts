@@ -15,7 +15,6 @@ const useHasSubMenu = () => {
   const navItemConfig = NAV_CONFIG.find(
     ({ href }) => href.replace("/", "") === firstSegment,
   );
-  console.log(segments);
   const subNavConfig =
     firstSegment === "locations" && segments.length === 1
       ? undefined
